@@ -17,6 +17,8 @@ export * from './scooters';
 export * from './accessories';
 export * from './brands';
 export * from './categories';
+export * from './adapters';
+export * from './validators';
 
 /**
  * All products (scooters + accessories)
