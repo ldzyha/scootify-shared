@@ -1,0 +1,514 @@
+/* ============================================
+   SmartSearch Component Styles
+   ============================================ */
+
+/* Search Wrapper (Trigger) */
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input Wrapper */
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: 12px;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--foreground);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.input::placeholder {
+  color: #606060;
+  transition: color 0.25s ease;
+}
+
+.inputWrapper:hover .input,
+.input:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--surface-hover);
+}
+
+/* Mobile: transparent unfocused state */
+@media (max-width: 768px) {
+  .input {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .input::placeholder {
+    color: #808080;
+  }
+
+  .inputWrapper:hover .input,
+  .input:focus {
+    background: var(--surface);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+  }
+
+  .input:focus::placeholder {
+    color: #606060;
+  }
+}
+
+/* Clear button for desktop inline input */
+.clearButtonInline {
+  position: absolute;
+  inset-inline-end: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.clearButtonInline:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   Desktop Dropdown Styles
+   ============================================ */
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline: 0;
+  max-height: 400px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 1001;
+  animation: dropdownFadeInDown 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown appearing above input (for mobile bottom bar) */
+.dropdownTop {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  inset-inline: 0;
+  max-height: 60vh;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1001;
+  animation: dropdownFadeInUp 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes dropdownFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown .searchContent,
+.dropdownTop .searchContent {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 8px;
+  order: 1;
+}
+
+/* ============================================
+   Dialog Search Styles
+   ============================================ */
+
+.dialogSearch {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px;
+}
+
+.dialogInputWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+  padding: 0 12px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  height: 44px;
+}
+
+.dialogInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+  font-size: 16px;
+  outline: none;
+}
+
+.dialogInput::placeholder {
+  color: #606060;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.clearButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cancelButton {
+  background: transparent;
+  border: none;
+  color: var(--primary-light);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px;
+  white-space: nowrap;
+}
+
+.cancelButton:hover {
+  color: var(--primary);
+}
+
+/* ============================================
+   Search Content
+   ============================================ */
+
+.searchContent {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  color: #808080;
+  font-size: 14px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.empty p {
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.empty span {
+  color: #606060;
+  font-size: 13px;
+}
+
+/* Results List */
+.results {
+  padding: 8px 0;
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: start;
+  transition: background 0.1s ease;
+}
+
+.resultItem:hover,
+.resultItem.active {
+  background: var(--surface-hover);
+}
+
+.resultImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--background);
+  flex-shrink: 0;
+}
+
+.resultImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resultInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultName {
+  display: block;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultPrice {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Section Title (for categories and popular products) */
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  color: #606060;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sectionIcon {
+  flex-shrink: 0;
+}
+
+/* Categories */
+.categories {
+  padding: 8px 0;
+}
+
+/* Popular Products */
+.popularProducts {
+  padding: 8px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 8px;
+}
+
+.loadingSmall {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--foreground);
+  font-size: 14px;
+  text-align: start;
+  transition: background 0.1s ease;
+}
+
+.categoryItem:hover,
+.categoryItem.active {
+  background: var(--surface-hover);
+}
+
+/* Contact Section - fixed at bottom (desktop) or top (mobile) */
+.contactSection {
+  padding: 8px 16px 8px 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  order: 2; /* Bottom on desktop */
+}
+
+/* On mobile, show at top */
+@media (max-width: 768px) {
+  .contactSection {
+    order: -1; /* Top on mobile */
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+.contactButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 12px 12px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: start;
+  transition: background 0.1s ease;
+}
+
+.contactButton:hover {
+  background: var(--surface-hover);
+}
+
+.contactButton span {
+  flex: 1;
+}
+
+/* ============================================
+   Responsive: Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  .searchWrapper {
+    max-width: none;
+    position: static;
+  }
+
+  .input {
+    height: 36px;
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+
+  .dropdown {
+    position: fixed;
+    top: 56px;
+    inset-inline: 0;
+    max-height: calc(100vh - 56px - 20px);
+    border-radius: 0;
+    border-inline: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .dialogSearch {
+    min-height: auto;
+    height: 100%;
+  }
+
+  .dialogHeader {
+    padding: 0 0 12px;
+  }
+
+  .dialogInputWrapper {
+    height: 40px;
+  }
+
+  .dialogInput {
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+}
+
+/* Scrollbar styling */
+.searchContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.searchContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.searchContent::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.searchContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

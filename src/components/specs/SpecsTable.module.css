@@ -1,0 +1,104 @@
+/**
+ * SpecsTable component styles
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+}
+
+.section {
+  background: var(--color-bg-primary, #fff);
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #e5e5e5);
+  overflow: hidden;
+}
+
+.sectionTitle {
+  margin: 0;
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  font-size: var(--font-size-lg, 18px);
+  font-weight: 600;
+  color: var(--color-text-primary, #000);
+  background: var(--color-bg-secondary, #f9fafb);
+  border-bottom: 1px solid var(--color-border, #e5e5e5);
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(150px, 2fr);
+  gap: var(--space-4, 16px);
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  border-bottom: 1px solid var(--color-border-light, #f0f0f0);
+  transition: background-color 0.2s ease;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: var(--color-bg-hover, #fafbfc);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base, 16px);
+  font-weight: 500;
+  color: var(--color-text-secondary, #666);
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base, 16px);
+  font-weight: 600;
+  color: var(--color-text-primary, #000);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--space-1, 4px) var(--space-2, 8px);
+  background: var(--color-bg-accent, #f0f9ff);
+  color: var(--color-primary, #0066cc);
+  border-radius: var(--radius-sm, 4px);
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive - stack on mobile */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1, 4px);
+  }
+  
+  .label {
+    font-size: var(--font-size-sm, 14px);
+  }
+  
+  .value {
+    font-size: var(--font-size-base, 16px);
+  }
+}
+
+/* Print styles */
+@media print {
+  .section {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  
+  .row:hover {
+    background: transparent;
+  }
+}

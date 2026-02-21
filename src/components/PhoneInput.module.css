@@ -1,0 +1,191 @@
+/**
+ * PhoneInput component styles
+ * 
+ * Features:
+ * - Configurable CSS variables for colors
+ * - Focus states with box shadows
+ * - Validation states (error, valid)
+ * - Smooth transitions and animations
+ * - Responsive mobile layout
+ * 
+ * CSS Variables (configurable):
+ * --phone-input-error-color: Error state color (default: --error)
+ * --phone-input-border-color: Default border color (default: --surface-hover)
+ * --phone-input-success-color: Success state color (default: --success)
+ * --phone-input-primary-color: Focus state color (default: --primary)
+ */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.required {
+  color: var(--phone-input-error-color, var(--error));
+  margin-left: 2px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.inputWrapper {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--phone-input-border-color, var(--surface-hover));
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: all 0.2s ease;
+}
+
+.inputWrapper:hover {
+  border-color: var(--foreground-muted);
+}
+
+.inputWrapper.focused {
+  border-color: var(--phone-input-primary-color, var(--primary));
+  box-shadow: 0 0 0 3px rgba(0, 87, 183, 0.15);
+}
+
+.inputWrapper.error {
+  border-color: var(--phone-input-error-color, var(--error));
+}
+
+.inputWrapper.error.focused {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.inputWrapper.valid {
+  border-color: var(--phone-input-success-color, var(--success));
+}
+
+.inputWrapper.valid.focused {
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--foreground);
+  font-family: inherit;
+}
+
+.input::placeholder {
+  color: var(--foreground-muted);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  animation: checkIn 0.2s ease;
+}
+
+@keyframes checkIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.callbackButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.loading {
+  display: inline-block;
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--phone-input-success-color, var(--success));
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.errorText {
+  font-size: 13px;
+  color: var(--phone-input-error-color, var(--error));
+  margin: 4px 0 0;
+}
+
+/* Mobile: stack callback button below input */
+@media (max-width: 480px) {
+  .inputRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .callbackButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .successMessage {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,141 @@
+/**
+ * ShippingSpecs component styles
+ */
+
+.container {
+  padding: var(--space-4, 16px);
+  background: var(--color-bg-primary, #fff);
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #e5e5e5);
+}
+
+.heading {
+  margin: 0 0 var(--space-3, 12px);
+  font-size: var(--font-size-lg, 18px);
+  font-weight: 600;
+  color: var(--color-text-primary, #000);
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3, 12px);
+  margin-bottom: var(--space-4, 16px);
+  padding-bottom: var(--space-4, 16px);
+  border-bottom: 1px solid var(--color-border, #e5e5e5);
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+}
+
+.label {
+  font-size: var(--font-size-sm, 14px);
+  color: var(--color-text-secondary, #666);
+  font-weight: 500;
+}
+
+.value {
+  font-size: var(--font-size-lg, 18px);
+  font-weight: 600;
+  color: var(--color-text-primary, #000);
+}
+
+.volumetric {
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 500;
+  color: var(--color-warning, #f59e0b);
+}
+
+/* Boxes section */
+.boxes {
+  margin-bottom: var(--space-4, 16px);
+}
+
+.boxesHeading {
+  font-size: var(--font-size-base, 16px);
+  font-weight: 600;
+  color: var(--color-text-primary, #000);
+  margin-bottom: var(--space-2, 8px);
+}
+
+.box {
+  padding: var(--space-3, 12px);
+  background: var(--color-bg-secondary, #f9fafb);
+  border-radius: var(--radius-sm, 4px);
+  margin-bottom: var(--space-2, 8px);
+}
+
+.box:last-child {
+  margin-bottom: 0;
+}
+
+.boxNumber {
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 600;
+  color: var(--color-primary, #0066cc);
+  margin-bottom: var(--space-1, 4px);
+}
+
+.boxDimensions {
+  font-size: var(--font-size-base, 16px);
+  font-weight: 500;
+  color: var(--color-text-primary, #000);
+  margin-bottom: var(--space-1, 4px);
+}
+
+.boxWeight {
+  font-size: var(--font-size-sm, 14px);
+  color: var(--color-text-secondary, #666);
+}
+
+.volumetricNote {
+  color: var(--color-warning, #f59e0b);
+  font-weight: 500;
+}
+
+/* Cargo info */
+.cargoInfo {
+  padding: var(--space-3, 12px);
+  background: var(--color-bg-accent, #f0f9ff);
+  border-radius: var(--radius-sm, 4px);
+  margin-bottom: var(--space-3, 12px);
+}
+
+.cargoLabel {
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 600;
+  color: var(--color-text-secondary, #666);
+  margin-bottom: var(--space-1, 4px);
+}
+
+.cargoValue {
+  font-size: var(--font-size-base, 16px);
+  color: var(--color-text-primary, #000);
+}
+
+/* Info note */
+.note {
+  padding: var(--space-3, 12px);
+  background: var(--color-bg-info, #fef3c7);
+  border-left: 3px solid var(--color-warning, #f59e0b);
+  border-radius: var(--radius-sm, 4px);
+  font-size: var(--font-size-sm, 14px);
+  line-height: 1.5;
+  color: var(--color-text-secondary, #666);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .overview {
+    grid-template-columns: 1fr;
+  }
+}

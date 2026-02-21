@@ -1,0 +1,738 @@
+/* ============================================
+   Telegram Bot Page Styles
+   ============================================ */
+
+/* ============================================
+   Variables
+   ============================================ */
+
+:root {
+  --telegram-blue: #0088cc;
+  --telegram-blue-dark: #006699;
+  --telegram-blue-light: #33a3d9;
+  --gradient-primary: linear-gradient(135deg, #0088cc 0%, #33a3d9 100%);
+  --gradient-hero: linear-gradient(135deg, #1a1a1a 0%, #2a2a3a 50%, #1a1a1a 100%);
+  --gradient-cta: linear-gradient(135deg, #006699 0%, #0088cc 50%, #33a3d9 100%);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-telegram: 0 4px 20px rgba(0, 136, 204, 0.3);
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --max-width-content: 1200px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+}
+
+/* ============================================
+   Skip Links (Accessibility)
+   ============================================ */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--telegram-blue);
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  z-index: 9999;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Base Layout
+   ============================================ */
+
+.telegram-bot-page {
+  min-height: 100vh;
+  background: #121212;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+}
+
+.section-container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  line-height: 1.2;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero-section {
+  background: var(--gradient-hero);
+  padding: var(--spacing-3xl) var(--spacing-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 136, 204, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bot-logo {
+  margin-bottom: var(--spacing-lg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.bot-logo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-telegram);
+  object-fit: cover;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.1;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: #b0b0b0;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.hero-cta button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: var(--shadow-telegram);
+}
+
+.hero-cta button:hover {
+  box-shadow: 0 8px 32px rgba(0, 136, 204, 0.5);
+}
+
+.bot-username {
+  font-size: 1.125rem;
+  color: var(--telegram-blue-light);
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* ============================================
+   Features Section
+   ============================================ */
+
+.features-section {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: #1a1a1a;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+  border: 1px solid rgba(0, 136, 204, 0.2);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top center, rgba(0, 136, 204, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+
+.feature-card:hover {
+  border-color: var(--telegram-blue);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-telegram);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-description {
+  font-size: 1rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   How to Use Section (Timeline)
+   ============================================ */
+
+.how-to-section {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: #121212;
+}
+
+.steps-timeline {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.steps-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--telegram-blue) 0%, var(--telegram-blue-dark) 100%);
+}
+
+.step-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.step-item:last-child {
+  margin-bottom: 0;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 900;
+  box-shadow: var(--shadow-telegram);
+  z-index: 1;
+  position: relative;
+}
+
+.step-icon {
+  position: absolute;
+  top: 70px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  border: 2px solid var(--telegram-blue);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.step-content {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+  border: 1px solid rgba(0, 136, 204, 0.2);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.step-content:hover {
+  border-color: var(--telegram-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--spacing-sm);
+}
+
+.step-description {
+  font-size: 1rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   Demo Video Section
+   ============================================ */
+
+.demo-section {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: #1a1a1a;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(0, 136, 204, 0.3);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   FAQ Section (Accordion)
+   ============================================ */
+
+.faq-section {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: #121212;
+}
+
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+  border: 1px solid rgba(0, 136, 204, 0.2);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq-item.expanded {
+  border-color: var(--telegram-blue);
+  box-shadow: var(--shadow-telegram);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--telegram-blue-light);
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid var(--telegram-blue);
+  outline-offset: -2px;
+}
+
+.question-text {
+  flex: 1;
+}
+
+.faq-answer {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+  color: #b0b0b0;
+  font-size: 1rem;
+  line-height: 1.7;
+  animation: slideDown var(--transition-normal) ease;
+}
+
+.faq-answer[hidden] {
+  display: none;
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Final CTA Section
+   ============================================ */
+
+.cta-section {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: var(--gradient-cta);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: moveBackground 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+.cta-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+.cta-description {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-section button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  color: var(--telegram-blue);
+}
+
+.cta-section button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .steps-timeline::before {
+    left: 20px;
+  }
+
+  .step-item {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .step-icon {
+    top: 50px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-description {
+    font-size: 1.125rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  :root {
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+  }
+
+  .hero-title {
+    font-size: 1.875rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .bot-logo img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .feature-card {
+    padding: var(--spacing-md);
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+  }
+
+  .feature-description {
+    font-size: 0.9375rem;
+  }
+
+  .step-content {
+    padding: var(--spacing-md);
+  }
+
+  .faq-question {
+    padding: var(--spacing-md);
+    font-size: 1rem;
+  }
+
+  .faq-answer {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    font-size: 0.9375rem;
+  }
+
+  .cta-title {
+    font-size: 1.75rem;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .telegram-bot-page {
+    background: #fff;
+    color: #000;
+  }
+
+  .skip-link,
+  .hero-cta,
+  .cta-section {
+    display: none;
+  }
+
+  .faq-answer[hidden] {
+    display: block !important;
+  }
+
+  .section-title,
+  .hero-title {
+    color: #000;
+  }
+}
+
+/* ============================================
+   Dark Mode Support (optional)
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  /* Override dark theme if user prefers light mode */
+  /* Currently keeping dark theme as default for bot page */
+  /* Uncomment below to add light mode support */
+  
+  /*
+  .telegram-bot-page {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+  
+  .feature-card,
+  .step-content,
+  .faq-item {
+    background: #f5f5f5;
+    border-color: rgba(0, 136, 204, 0.3);
+  }
+  */
+}
+
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .bot-logo {
+    animation: none;
+  }
+
+  .cta-section::before {
+    animation: none;
+  }
+}
+
+/* ============================================
+   High Contrast Mode Support
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .feature-card,
+  .step-content,
+  .faq-item {
+    border-width: 2px;
+  }
+
+  .faq-question:focus-visible {
+    outline-width: 3px;
+  }
+}

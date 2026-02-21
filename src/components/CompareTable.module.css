@@ -1,0 +1,445 @@
+/* Container */
+.compareContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mobile Controls */
+.mobileControls {
+  display: none;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.viewToggle {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewToggle:hover {
+  background-color: #e9e9e9;
+}
+
+.viewToggle.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Desktop/Mobile View Toggles */
+.desktopView {
+  display: block;
+}
+
+.mobileView {
+  display: none;
+}
+
+/* Table Wrapper */
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.scrollWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Compare Table */
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.compareTable th,
+.compareTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.compareTable thead th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  vertical-align: top;
+}
+
+.compareTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sticky Header */
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Column Widths */
+.specColumn {
+  width: 20%;
+  min-width: 150px;
+  font-weight: 600;
+  background-color: #f8f9fa;
+  position: sticky;
+  left: 0;
+  z-index: 5;
+}
+
+.productColumn {
+  width: calc(80% / var(--product-count, 3));
+  min-width: 200px;
+}
+
+/* Product Header */
+.productHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.productImage {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.productName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.removeButton {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #666;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+/* Spec Rows */
+.specLabel {
+  font-weight: 500;
+  color: #333;
+  background-color: #fafafa;
+  position: sticky;
+  left: 0;
+  z-index: 5;
+}
+
+.categoryRow {
+  background-color: #e9ecef;
+}
+
+.categoryRow td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #495057;
+}
+
+/* Highlighted Differences */
+.different {
+  background-color: #fff9e6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* Feature List */
+.featureList {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.featureList li {
+  margin-bottom: 0.25rem;
+}
+
+.featureList li:last-child {
+  margin-bottom: 0;
+}
+
+.featureList.different {
+  background-color: transparent;
+  padding: 0;
+  padding-left: 1.25rem;
+}
+
+.featureList.different li {
+  background-color: #fff9e6;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Action Button */
+.actionButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #0056b3;
+}
+
+.actionButton:active {
+  transform: scale(0.98);
+}
+
+/* Accordion View (Mobile) */
+.accordionView {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordionItem {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.accordionHeader {
+  width: 100%;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.accordionHeader:hover {
+  background-color: #e9ecef;
+}
+
+.accordionHeaderContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.accordionImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.accordionProductName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.accordionIcon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.accordionContent {
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.accordionCategory {
+  margin-bottom: 1.5rem;
+}
+
+.accordionCategory:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.accordionCategory h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #495057;
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.specList {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.specList dt {
+  font-weight: 500;
+  color: #666;
+}
+
+.specList dd {
+  margin: 0;
+  color: #333;
+}
+
+.removeButtonMobile {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.removeButtonMobile:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mobileControls {
+    display: flex;
+  }
+
+  .desktopView {
+    display: none;
+  }
+
+  .mobileView {
+    display: block;
+  }
+
+  /* Adjust scroll view for mobile */
+  .scrollWrapper .compareTable {
+    font-size: 0.75rem;
+  }
+
+  .scrollWrapper .compareTable th,
+  .scrollWrapper .compareTable td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .scrollWrapper .productImage {
+    max-width: 80px;
+  }
+
+  .scrollWrapper .productName {
+    font-size: 0.875rem;
+  }
+
+  .scrollWrapper .specColumn {
+    min-width: 120px;
+    font-size: 0.75rem;
+  }
+
+  .scrollWrapper .productColumn {
+    min-width: 150px;
+  }
+
+  .scrollWrapper .actionButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .accordionHeaderContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .accordionImage {
+    width: 50px;
+    height: 50px;
+  }
+
+  .accordionProductName {
+    font-size: 0.875rem;
+  }
+
+  .specList {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .specList dt {
+    font-size: 0.75rem;
+  }
+
+  .specList dd {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .compareTable {
+    font-size: 0.8125rem;
+  }
+
+  .productImage {
+    max-width: 120px;
+  }
+
+  .productColumn {
+    min-width: 180px;
+  }
+}

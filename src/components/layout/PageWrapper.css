@@ -1,0 +1,166 @@
+/**
+ * PageWrapper Component Styles
+ * Provides full-page layout with sticky footer and accessibility features
+ */
+
+:root {
+  --page-spacing-top: 2rem;
+  --page-spacing-bottom: 2rem;
+  --page-spacing-x: 1.5rem;
+  --header-height: auto;
+  --footer-height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Main wrapper - sticky footer layout */
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Skip to content link for accessibility */
+.skipToContent {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 1rem 1.5rem;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s ease-in-out;
+}
+
+.skipToContent:focus {
+  top: 0;
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Header styles */
+.pageHeader {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.headerContent {
+  max-width: var(--content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 1rem var(--page-spacing-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerContent h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.cartBadge {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  background-color: #ef4444;
+  color: #fff;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Main content area */
+.pageContent {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max-width, 1200px);
+  margin: 0 auto;
+  padding: var(--page-spacing-top) var(--page-spacing-x) var(--page-spacing-bottom);
+}
+
+/* Footer styles */
+.pageFooter {
+  background-color: #111827;
+  color: #fff;
+  margin-top: auto;
+}
+
+.footerContent {
+  max-width: var(--content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 2rem var(--page-spacing-x);
+  text-align: center;
+}
+
+.footerContent p {
+  margin: 0.5rem 0;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.footerContent p:first-child {
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --page-spacing-top: 1.5rem;
+    --page-spacing-bottom: 1.5rem;
+    --page-spacing-x: 1rem;
+  }
+
+  .headerContent h1 {
+    font-size: 1.25rem;
+  }
+
+  .skipToContent {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --page-spacing-top: 1rem;
+    --page-spacing-bottom: 1rem;
+    --page-spacing-x: 0.75rem;
+  }
+
+  .headerContent h1 {
+    font-size: 1.125rem;
+  }
+
+  .footerContent {
+    padding: 1.5rem var(--page-spacing-x);
+  }
+}
+
+/* Print styles */
+@media print {
+  .pageHeader,
+  .pageFooter,
+  .skipToContent {
+    display: none;
+  }
+
+  .pageContent {
+    padding: 0;
+    max-width: 100%;
+  }
+}

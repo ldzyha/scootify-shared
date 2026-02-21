@@ -1,0 +1,157 @@
+/**
+ * VariantSelector Component Styles
+ * 
+ * Metallic pill-style variant selector with configurable CSS variables.
+ * Features gray (unselected) and blue (selected) gradients.
+ * 
+ * CSS Variables (customizable):
+ * --variant-voltage-color: Color of the voltage label (default: #d4af37)
+ * --variant-pill-gap: Gap between pills (default: 8px)
+ * --variant-pill-padding: Padding inside pills (default: 10px 16px)
+ * --variant-pill-border-radius: Border radius of pills (default: 8px)
+ * --variant-pill-name-color: Name text color (default: #b0b0b0)
+ * --variant-pill-capacity-color: Capacity text color (default: #808080)
+ * --variant-pill-selected-name-color: Selected name text color (default: #ffffff)
+ * --variant-pill-selected-capacity-color: Selected capacity text color (default: rgba(255, 255, 255, 0.85))
+ */
+
+/* Container */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Voltage label - plain text, not a button */
+.voltage {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--variant-voltage-color, #d4af37);
+}
+
+/* Pills container */
+.pills {
+  display: flex;
+  gap: var(--variant-pill-gap, 8px);
+  flex-wrap: wrap;
+}
+
+/* Individual pill - Gray metallic style (like carousel arrows) */
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--variant-pill-padding, 10px 16px);
+  border-radius: var(--variant-pill-border-radius, 8px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  /* Gray metallic gradient */
+  background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 40%, #4a4a4a 50%, #3a3a3a 60%, #2a2a2a 100%);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.pill:hover:not(.selected) {
+  /* Lighter gray on hover */
+  background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 40%, #5a5a5a 50%, #4a4a4a 60%, #3a3a3a 100%);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.pill:active:not(.selected) {
+  transform: scale(0.96);
+}
+
+/* Selected state - Blue metallic (like carousel arrow hover) */
+.pill.selected {
+  background: linear-gradient(135deg, #2a5a8c 0%, #4080b8 40%, #60a0d8 50%, #4080b8 60%, #2a5a8c 100%);
+  box-shadow:
+    0 2px 8px rgba(64, 128, 184, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Text styles - name and capacity inline */
+.name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--variant-pill-name-color, #b0b0b0);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.capacity {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--variant-pill-capacity-color, #808080);
+}
+
+/* Selected state text */
+.pill.selected .name {
+  color: var(--variant-pill-selected-name-color, #ffffff);
+}
+
+.pill.selected .capacity {
+  color: var(--variant-pill-selected-capacity-color, rgba(255, 255, 255, 0.85));
+}
+
+/* Hover state text */
+.pill:hover:not(.selected) .name {
+  color: #d0d0d0;
+}
+
+.pill:hover:not(.selected) .capacity {
+  color: #a0a0a0;
+}
+
+/* ======================================
+   SIZE: Small variant
+   ====================================== */
+.sm .voltage {
+  font-size: 13px;
+}
+
+.sm .pill {
+  padding: 8px 12px;
+  gap: 5px;
+}
+
+.sm .name {
+  font-size: 11px;
+}
+
+.sm .capacity {
+  font-size: 11px;
+}
+
+/* ======================================
+   RESPONSIVE: Tablet and up
+   ====================================== */
+@media (min-width: 640px) {
+  .voltage {
+    font-size: 16px;
+  }
+
+  .pill {
+    padding: 12px 18px;
+    gap: 8px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .capacity {
+    font-size: 14px;
+  }
+}
+
+/* Focus state for accessibility */
+.pill:focus-visible {
+  outline: 2px solid var(--variant-focus-outline-color, #0057B7);
+  outline-offset: 2px;
+}

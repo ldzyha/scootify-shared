@@ -1,0 +1,167 @@
+/* ============================================
+   Cookie Banner Styles
+   ============================================ */
+
+/**
+ * CSS Custom Properties (Variables)
+ * 
+ * Override these in your app's global CSS to customize the banner:
+ * 
+ * @example
+ * ```css
+ * :root {
+ *   --cookie-banner-bg: #1a1a1a;
+ *   --cookie-banner-gap: 16px;
+ *   --cookie-banner-primary: #3b82f6;
+ * }
+ * ```
+ */
+.banner {
+  /* Positioning */
+  position: fixed;
+  bottom: var(--cookie-banner-bottom, 24px);
+  right: var(--cookie-banner-right, 24px);
+  z-index: var(--cookie-banner-z-index, 9999);
+  
+  /* Sizing */
+  max-width: var(--cookie-banner-max-width, 400px);
+  width: var(--cookie-banner-width, calc(100vw - 48px));
+  
+  /* Styling */
+  background: var(--cookie-banner-bg, #0a0a0a);
+  border: var(--cookie-banner-border, 1px solid #2a2a2a);
+  border-radius: var(--cookie-banner-border-radius, 12px);
+  padding: var(--cookie-banner-padding, 20px);
+  box-shadow: var(--cookie-banner-shadow, 0 8px 32px rgba(0, 0, 0, 0.3));
+  
+  /* Animation */
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content Layout */
+.content {
+  display: flex;
+  gap: var(--cookie-banner-content-gap, 14px);
+  margin-bottom: var(--cookie-banner-content-margin-bottom, 16px);
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: var(--cookie-banner-icon-size, 40px);
+  height: var(--cookie-banner-icon-size, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(
+    --cookie-banner-icon-bg,
+    linear-gradient(
+      135deg,
+      rgba(42, 90, 140, 0.2) 0%,
+      rgba(96, 160, 216, 0.1) 50%,
+      rgba(42, 90, 140, 0.2) 100%
+    )
+  );
+  border-radius: var(--cookie-banner-icon-border-radius, 10px);
+}
+
+.text {
+  flex: 1;
+}
+
+.title {
+  font-size: var(--cookie-banner-title-size, 15px);
+  font-weight: var(--cookie-banner-title-weight, 600);
+  margin: 0 0 var(--cookie-banner-title-margin-bottom, 6px) 0;
+  color: var(--cookie-banner-title-color, #ffffff);
+}
+
+.description {
+  color: var(--cookie-banner-description-color, #909090);
+  font-size: var(--cookie-banner-description-size, 13px);
+  line-height: var(--cookie-banner-description-line-height, 1.5);
+  margin: 0;
+}
+
+.link {
+  color: var(--cookie-banner-link-color, var(--primary-light, #60a0d8));
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--cookie-banner-link-hover-color, var(--primary, #2a5a8c));
+  text-decoration: underline;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   Responsive: Mobile
+   ============================================ */
+
+@media (max-width: 640px) {
+  .banner {
+    bottom: var(--cookie-banner-mobile-bottom, 16px);
+    right: var(--cookie-banner-mobile-right, 16px);
+    left: var(--cookie-banner-mobile-left, 16px);
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    flex-direction: column;
+    gap: var(--cookie-banner-mobile-content-gap, 12px);
+  }
+
+  .iconWrapper {
+    width: var(--cookie-banner-mobile-icon-size, 36px);
+    height: var(--cookie-banner-mobile-icon-size, 36px);
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   Theming Support
+   ============================================ */
+
+/* Dark mode (default) */
+[data-theme='dark'] .banner,
+.banner {
+  --cookie-banner-bg: var(--cookie-banner-dark-bg, #0a0a0a);
+  --cookie-banner-border: var(--cookie-banner-dark-border, 1px solid #2a2a2a);
+  --cookie-banner-title-color: var(--cookie-banner-dark-title-color, #ffffff);
+  --cookie-banner-description-color: var(--cookie-banner-dark-description-color, #909090);
+}
+
+/* Light mode */
+[data-theme='light'] .banner {
+  --cookie-banner-bg: var(--cookie-banner-light-bg, #ffffff);
+  --cookie-banner-border: var(--cookie-banner-light-border, 1px solid #e5e5e5);
+  --cookie-banner-title-color: var(--cookie-banner-light-title-color, #1a1a1a);
+  --cookie-banner-description-color: var(--cookie-banner-light-description-color, #666666);
+  --cookie-banner-shadow: var(--cookie-banner-light-shadow, 0 8px 32px rgba(0, 0, 0, 0.1));
+}

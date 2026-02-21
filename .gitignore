@@ -1,0 +1,22 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+.env.local
+
+# Build artifacts
+*.tsbuildinfo
+.turbo/
+
+# Migration artifacts (temporary)
+migration-output.json
+migrate.py
+migrate-scooters.js
+json-to-ts.js
+test-*.ts
+test-*.js
+
+# IDE
+.vscode/
+.idea/

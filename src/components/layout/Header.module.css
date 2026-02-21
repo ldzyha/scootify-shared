@@ -1,0 +1,219 @@
+/* ============================================
+   Header Component Styles
+   ============================================ */
+
+/* Header Base */
+.header {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  z-index: 1000;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+/* Allow dropdown to overflow when visible */
+.header:has(.mainVisible) {
+  overflow: visible;
+}
+
+/* Scroll States */
+.atTop {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.scrolled {
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Header Section */
+.main {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mainVisible {
+  /* Header visible */
+}
+
+.mainHidden {
+  pointer-events: none;
+}
+
+/* Hide entire header when main is hidden */
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.atTop .main {
+  border-bottom-color: transparent;
+}
+
+/* Container */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  height: 60px;
+}
+
+/* Spacer - accounts for fixed header height */
+.spacer {
+  height: 60px;
+}
+
+/* ============================================
+   Logo
+   ============================================ */
+
+.logo {
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Search Container
+   ============================================ */
+
+.searchContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   Actions (Language Switcher, Cart)
+   ============================================ */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.languageSwitcher {
+  display: flex;
+  align-items: center;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--foreground, #ffffff);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.actionButton:hover {
+  background: var(--surface-hover, rgba(255, 255, 255, 0.1));
+}
+
+.actionLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Cart Badge */
+.cartIconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  inset-inline-end: -8px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: linear-gradient(135deg, #8c2a2a 0%, #b84040 50%, #8c2a2a 100%);
+  border-radius: 9px;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* ============================================
+   Responsive: Mobile
+   ============================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px 12px;
+    height: 56px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .spacer {
+    height: 56px;
+  }
+
+  .logoText {
+    font-size: 18px;
+  }
+
+  .searchContainer {
+    flex: 1;
+    max-width: none;
+    margin: 0;
+  }
+
+  .actions {
+    gap: 2px;
+  }
+
+  .actionButton {
+    padding: 6px;
+  }
+
+  .actionLabel {
+    display: none;
+  }
+
+  .languageSwitcher {
+    display: none; /* Hide on mobile - can be shown in mobile menu */
+  }
+}
+
+/* Tablet: Show search, hide labels */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .actionLabel {
+    display: none;
+  }
+
+  .actionButton {
+    padding: 8px;
+  }
+
+  .searchContainer {
+    max-width: 350px;
+  }
+}

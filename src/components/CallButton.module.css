@@ -1,0 +1,63 @@
+/* CallButton QR Dialog */
+
+.content {
+  padding: 8px 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--foreground-muted, rgba(255, 255, 255, 0.6));
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.qrContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  margin: 24px 0;
+  background: var(--surface, #1a1a1a);
+  border-radius: 16px;
+}
+
+.qrCode {
+  border-radius: 8px;
+}
+
+.phone {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--foreground, #ffffff);
+  margin: 0 0 16px;
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--surface, #1a1a1a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--foreground-muted, rgba(255, 255, 255, 0.6));
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copyButton:hover {
+  background: var(--surface-hover, #2a2a2a);
+  color: var(--foreground, #ffffff);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.copyButton:active {
+  transform: scale(0.98);
+}

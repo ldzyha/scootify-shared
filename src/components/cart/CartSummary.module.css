@@ -1,0 +1,260 @@
+/* CartSummary.module.css */
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+  padding: var(--space-6, 1.5rem);
+  background: var(--bg-secondary, #1a1a1a);
+  border: 1px solid var(--border-primary, #2a2a2a);
+  border-radius: var(--radius-lg, 12px);
+  position: sticky;
+  top: var(--space-4, 1rem);
+}
+
+.title {
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin: 0;
+  padding-bottom: var(--space-4, 1rem);
+  border-bottom: 1px solid var(--border-primary, #2a2a2a);
+}
+
+/* Summary Lines */
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 1rem);
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+}
+
+.label {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-secondary, #d0d0d0);
+  font-weight: 500;
+}
+
+.freeShipping {
+  color: var(--text-success, #22c55e);
+  font-weight: 600;
+}
+
+.freeValue {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-success, #22c55e);
+  font-weight: 600;
+}
+
+/* Discount Line */
+.discountLine {
+  color: var(--text-success, #22c55e);
+}
+
+.discountLine .label {
+  color: var(--text-success, #22c55e);
+}
+
+.promoCode {
+  font-size: var(--text-xs, 0.75rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.discountValue {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1, 0.25rem);
+  color: var(--text-success, #22c55e);
+  font-weight: 600;
+}
+
+/* Total Line */
+.totalLine {
+  padding-top: var(--space-4, 1rem);
+  border-top: 2px solid var(--border-highlight, #3a3a3a);
+  margin-top: var(--space-2, 0.5rem);
+}
+
+.totalLabel {
+  font-size: var(--text-lg, 1.125rem);
+  color: var(--text-primary, #ffffff);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Promo Code Form */
+.promoForm {
+  display: flex;
+  gap: var(--space-2, 0.5rem);
+  padding: var(--space-4, 1rem);
+  background: var(--bg-tertiary, #0f0f14);
+  border-radius: var(--radius-md, 8px);
+}
+
+.promoInput {
+  flex: 1;
+  padding: var(--space-3, 0.75rem);
+  background: var(--bg-secondary, #1a1a1a);
+  border: 1px solid var(--border-primary, #2a2a2a);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--text-primary, #ffffff);
+  font-size: var(--text-sm, 0.875rem);
+  transition: all 0.2s ease;
+}
+
+.promoInput:focus {
+  outline: none;
+  border-color: var(--border-accent, #60a5fa);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.promoInput::placeholder {
+  color: var(--text-muted, #888);
+}
+
+.promoButton {
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  background: var(--bg-accent, #3b82f6);
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  color: var(--text-primary, #ffffff);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.promoButton:hover {
+  background: var(--bg-accent-hover, #2563eb);
+  transform: translateY(-1px);
+}
+
+.promoButton:active {
+  transform: translateY(0);
+}
+
+/* Checkout Button */
+.checkoutButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+}
+
+.loadingText {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+}
+
+.loadingText::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Continue Shopping Button */
+.continueButton {
+  width: 100%;
+  padding: var(--space-3, 0.75rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  background: transparent;
+  border: 1px solid var(--border-primary, #2a2a2a);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-secondary, #d0d0d0);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.continueButton:hover {
+  background: var(--bg-tertiary, #0f0f14);
+  border-color: var(--border-highlight, #3a3a3a);
+  color: var(--text-primary, #ffffff);
+}
+
+.continueButton:active {
+  transform: scale(0.98);
+}
+
+/* Additional Info */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 0.75rem);
+  padding: var(--space-4, 1rem);
+  background: var(--bg-tertiary, #0f0f14);
+  border-radius: var(--radius-md, 8px);
+}
+
+.infoText {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  margin: 0;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted, #888);
+}
+
+.infoText svg {
+  color: var(--text-accent, #60a5fa);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .summary {
+    position: relative;
+    top: 0;
+    padding: var(--space-4, 1rem);
+    gap: var(--space-4, 1rem);
+  }
+
+  .title {
+    font-size: var(--text-lg, 1.125rem);
+  }
+
+  .lines {
+    gap: var(--space-3, 0.75rem);
+  }
+
+  .promoForm {
+    flex-direction: column;
+  }
+
+  .promoButton {
+    width: 100%;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .summary {
+    position: relative;
+    top: 0;
+  }
+}

@@ -1,0 +1,245 @@
+/* ============================================
+   Contact Dialog Styles
+   ============================================ */
+
+.contactContent {
+  padding: 8px 0;
+  text-align: center;
+}
+
+.contactTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contactSubtitle {
+  color: #808080;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* ============================================
+   Contact Info
+   ============================================ */
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Contact Row */
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--surface, rgba(255, 255, 255, 0.05));
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.contactRow:hover {
+  background: var(--surface-hover, rgba(255, 255, 255, 0.08));
+}
+
+.contactRowMain {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  text-decoration: none;
+  text-align: left;
+  min-width: 0;
+}
+
+.contactRowInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.contactLabel {
+  display: block;
+  color: #606060;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.contactValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground, #ffffff);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Action Buttons */
+.contactRowActions {
+  display: flex;
+  gap: 4px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--foreground-muted, #a0a0a0);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.actionBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--foreground, #ffffff);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.actionBtn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   QR Code View
+   ============================================ */
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background: transparent;
+  border: none;
+  color: var(--foreground-muted, #a0a0a0);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.backButton:hover {
+  color: var(--foreground, #ffffff);
+}
+
+.qrContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  margin: 24px 0;
+  background: var(--surface, rgba(255, 255, 255, 0.05));
+  border-radius: 16px;
+}
+
+.qrCode {
+  border-radius: 8px;
+}
+
+.qrPhone {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--foreground, #ffffff);
+  margin: 0;
+}
+
+/* ============================================
+   Success Icon
+   ============================================ */
+
+.successIcon {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   Callback Section
+   ============================================ */
+
+.callbackSection {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.callbackTitle {
+  display: block;
+  color: #808080;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.callbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.callbackInput {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  background: var(--surface, rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--foreground, #ffffff);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.callbackInput::placeholder {
+  color: #606060;
+}
+
+.callbackInput:focus {
+  border-color: var(--primary, #3b82f6);
+}
+
+.callbackError {
+  color: var(--error, #ef4444);
+  font-size: 13px;
+  text-align: left;
+}
+
+.callbackButton {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* Callback Success */
+.callbackSuccess {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.callbackSuccessTitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--foreground, #ffffff);
+  margin-bottom: 2px;
+}
+
+.callbackSuccessText {
+  display: block;
+  font-size: 13px;
+  color: var(--foreground-muted, #a0a0a0);
+}

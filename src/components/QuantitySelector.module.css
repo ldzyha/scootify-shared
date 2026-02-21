@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--quantity-selector-background, var(--surface));
+  border-radius: var(--quantity-selector-border-radius, 8px);
+  border: 1px solid var(--quantity-selector-border-color, rgba(255, 255, 255, 0.1));
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--quantity-selector-button-size, 36px);
+  height: var(--quantity-selector-button-size, 36px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--quantity-selector-button-color, var(--foreground));
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--quantity-selector-button-hover-bg, rgba(255, 255, 255, 0.1));
+}
+
+.button:disabled {
+  opacity: var(--quantity-selector-button-disabled-opacity, 0.3);
+  cursor: not-allowed;
+}
+
+.button:first-child {
+  border-radius: var(--quantity-selector-border-radius, 8px) 0 0 var(--quantity-selector-border-radius, 8px);
+}
+
+.button:last-child {
+  border-radius: 0 var(--quantity-selector-border-radius, 8px) var(--quantity-selector-border-radius, 8px) 0;
+}
+
+.quantity {
+  min-width: var(--quantity-selector-quantity-width, 40px);
+  text-align: center;
+  font-size: var(--quantity-selector-font-size, 14px);
+  font-weight: var(--quantity-selector-font-weight, 500);
+  color: var(--quantity-selector-text-color, var(--foreground));
+}

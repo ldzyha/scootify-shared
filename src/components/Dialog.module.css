@@ -1,0 +1,763 @@
+/* ============================================
+   Native Dialog Styles
+   Uses HTML <dialog> for accessibility & performance
+   ============================================ */
+
+/* ============================================
+   CSS Custom Properties (Configurable)
+   Note: Define these in your global CSS file if needed
+   ============================================ */
+
+/* ============================================
+   Base Dialog Styles
+   ============================================ */
+
+/* Reset dialog defaults */
+.dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Ensure dialog is hidden when not open (Firefox fix) */
+.dialog:not([open]) {
+  display: none;
+  pointer-events: none;
+}
+
+/* Backdrop styling */
+.dialog::backdrop {
+  background: var(--dialog-backdrop);
+  backdrop-filter: blur(var(--dialog-backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--dialog-backdrop-blur));
+  animation: backdrop-fade-in var(--dialog-duration-backdrop-in) var(--dialog-easing-backdrop);
+}
+
+.dialog[data-closing]::backdrop {
+  animation: backdrop-fade-out var(--dialog-duration-backdrop-out) var(--dialog-easing-backdrop) forwards;
+}
+
+/* Dialog positioning & sizing */
+.dialog[open] {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Content wrapper */
+.content {
+  position: relative;
+  background: var(--dialog-surface);
+  border: 1px solid var(--dialog-border);
+  border-radius: var(--dialog-border-radius);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--dialog-shadow-inner);
+  overflow: hidden;
+  max-height: var(--dialog-max-height);
+  overflow-y: auto;
+}
+
+/* ============================================
+   Size Variants
+   ============================================ */
+
+.size-sm .content {
+  width: 100%;
+  max-width: var(--dialog-size-sm);
+  padding: var(--dialog-padding-sm);
+}
+
+.size-md .content {
+  width: 100%;
+  max-width: var(--dialog-size-md);
+  padding: var(--dialog-padding-md);
+}
+
+.size-lg .content {
+  width: 100%;
+  max-width: var(--dialog-size-lg);
+  padding: var(--dialog-padding-lg);
+}
+
+.size-full .content {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0;
+}
+
+/* ============================================
+   Position: Center (Default)
+   ============================================ */
+
+.position-center[open] {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile: slide up from bottom */
+@media (max-width: 640px) {
+  .position-center[open] .content {
+    animation: slide-up var(--dialog-duration-in) var(--dialog-easing-in);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: var(--dialog-border-radius-mobile) var(--dialog-border-radius-mobile) 0 0;
+    max-height: var(--dialog-max-height-mobile);
+  }
+
+  .position-center[data-closing] .content {
+    animation: slide-down var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+  }
+
+  .position-center.size-full .content {
+    top: 0;
+    border-radius: 0;
+    max-height: 100%;
+  }
+}
+
+/* Desktop: fade with scale */
+@media (min-width: 641px) {
+  .position-center[open] .content {
+    animation: fade-scale-in var(--dialog-duration-desktop-in) var(--dialog-easing-in);
+  }
+
+  .position-center[data-closing] .content {
+    animation: fade-scale-out var(--dialog-duration-desktop-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+/* ============================================
+   Position: Top-Left (Desktop) / Top (Mobile)
+   ============================================ */
+
+.position-top-left[open] {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .position-top-left[open] {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .position-top-left[open] .content {
+    animation: slide-from-top var(--dialog-duration-in) var(--dialog-easing-in);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 var(--dialog-border-radius-mobile) var(--dialog-border-radius-mobile);
+    max-height: var(--dialog-max-height-mobile);
+  }
+
+  .position-top-left[data-closing] .content {
+    animation: slide-to-top var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+@media (min-width: 641px) {
+  .position-top-left[open] .content {
+    animation: fade-slide-in-top-left var(--dialog-duration-desktop-in) var(--dialog-easing-in);
+  }
+
+  .position-top-left[data-closing] .content {
+    animation: fade-slide-out-top-left var(--dialog-duration-desktop-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+/* ============================================
+   Position: Top-Right (Desktop) / Top (Mobile)
+   ============================================ */
+
+.position-top-right[open] {
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .position-top-right[open] {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .position-top-right[open] .content {
+    animation: slide-from-top var(--dialog-duration-in) var(--dialog-easing-in);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 var(--dialog-border-radius-mobile) var(--dialog-border-radius-mobile);
+    max-height: var(--dialog-max-height-mobile);
+  }
+
+  .position-top-right[data-closing] .content {
+    animation: slide-to-top var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+@media (min-width: 641px) {
+  .position-top-right[open] .content {
+    animation: fade-slide-in-top-right var(--dialog-duration-desktop-in) var(--dialog-easing-in);
+  }
+
+  .position-top-right[data-closing] .content {
+    animation: fade-slide-out-top-right var(--dialog-duration-desktop-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+/* ============================================
+   Position: Bottom-Left (Desktop) / Bottom (Mobile)
+   ============================================ */
+
+.position-bottom-left[open] {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .position-bottom-left[open] {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .position-bottom-left[open] .content {
+    animation: slide-up var(--dialog-duration-in) var(--dialog-easing-in);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: var(--dialog-border-radius-mobile) var(--dialog-border-radius-mobile) 0 0;
+    max-height: var(--dialog-max-height-mobile);
+  }
+
+  .position-bottom-left[data-closing] .content {
+    animation: slide-down var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+@media (min-width: 641px) {
+  .position-bottom-left[open] .content {
+    animation: fade-slide-in-bottom-left var(--dialog-duration-desktop-in) var(--dialog-easing-in);
+  }
+
+  .position-bottom-left[data-closing] .content {
+    animation: fade-slide-out-bottom-left var(--dialog-duration-desktop-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+/* ============================================
+   Position: Bottom-Right (Desktop) / Bottom (Mobile)
+   ============================================ */
+
+.position-bottom-right[open] {
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .position-bottom-right[open] {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .position-bottom-right[open] .content {
+    animation: slide-up var(--dialog-duration-in) var(--dialog-easing-in);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: var(--dialog-border-radius-mobile) var(--dialog-border-radius-mobile) 0 0;
+    max-height: var(--dialog-max-height-mobile);
+  }
+
+  .position-bottom-right[data-closing] .content {
+    animation: slide-down var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+@media (min-width: 641px) {
+  .position-bottom-right[open] .content {
+    animation: fade-slide-in-bottom-right var(--dialog-duration-desktop-in) var(--dialog-easing-in);
+  }
+
+  .position-bottom-right[data-closing] .content {
+    animation: fade-slide-out-bottom-right var(--dialog-duration-desktop-out) var(--dialog-easing-out) forwards;
+  }
+}
+
+/* ============================================
+   Position: Panel Left (Slide from left)
+   ============================================ */
+
+.position-panel-left[open] {
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.position-panel-left[open] .content {
+  animation: slide-from-left var(--dialog-duration-in) var(--dialog-easing-in);
+  height: 100%;
+  max-height: 100%;
+  border-radius: 0 var(--dialog-border-radius) var(--dialog-border-radius) 0;
+}
+
+.position-panel-left[data-closing] .content {
+  animation: slide-to-left var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+}
+
+/* Panel left size overrides */
+.position-panel-left.size-sm .content {
+  max-width: var(--dialog-panel-sm);
+}
+
+.position-panel-left.size-md .content {
+  max-width: var(--dialog-panel-md);
+}
+
+.position-panel-left.size-lg .content {
+  max-width: var(--dialog-panel-lg);
+}
+
+.position-panel-left.size-full .content {
+  max-width: 100%;
+  border-radius: 0;
+}
+
+/* ============================================
+   Position: Panel Right (Slide from right)
+   ============================================ */
+
+.position-panel-right[open] {
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.position-panel-right[open] .content {
+  animation: slide-from-right var(--dialog-duration-in) var(--dialog-easing-in);
+  height: 100%;
+  max-height: 100%;
+  border-radius: var(--dialog-border-radius) 0 0 var(--dialog-border-radius);
+}
+
+.position-panel-right[data-closing] .content {
+  animation: slide-to-right var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+}
+
+/* Panel right size overrides */
+.position-panel-right.size-sm .content {
+  max-width: var(--dialog-panel-sm);
+}
+
+.position-panel-right.size-md .content {
+  max-width: var(--dialog-panel-md);
+}
+
+.position-panel-right.size-lg .content {
+  max-width: var(--dialog-panel-lg);
+}
+
+.position-panel-right.size-full .content {
+  max-width: 100%;
+  border-radius: 0;
+}
+
+/* ============================================
+   Position: Panel Top (Slide from top)
+   ============================================ */
+
+.position-panel-top[open] {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.position-panel-top[open] .content {
+  animation: slide-from-top var(--dialog-duration-in) var(--dialog-easing-in);
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0 0 var(--dialog-border-radius) var(--dialog-border-radius);
+}
+
+.position-panel-top[data-closing] .content {
+  animation: slide-to-top var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+}
+
+/* Panel top size overrides (height-based) */
+.position-panel-top.size-sm .content {
+  max-height: var(--dialog-panel-height-sm);
+}
+
+.position-panel-top.size-md .content {
+  max-height: var(--dialog-panel-height-md);
+}
+
+.position-panel-top.size-lg .content {
+  max-height: var(--dialog-panel-height-lg);
+}
+
+.position-panel-top.size-full .content {
+  max-height: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* ============================================
+   Position: Panel Bottom (Slide from bottom)
+   ============================================ */
+
+.position-panel-bottom[open] {
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.position-panel-bottom[open] .content {
+  animation: slide-up var(--dialog-duration-in) var(--dialog-easing-in);
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--dialog-border-radius) var(--dialog-border-radius) 0 0;
+}
+
+.position-panel-bottom[data-closing] .content {
+  animation: slide-down var(--dialog-duration-out) var(--dialog-easing-out) forwards;
+}
+
+/* Panel bottom size overrides (height-based) */
+.position-panel-bottom.size-sm .content {
+  max-height: var(--dialog-panel-height-sm);
+}
+
+.position-panel-bottom.size-md .content {
+  max-height: var(--dialog-panel-height-md);
+}
+
+.position-panel-bottom.size-lg .content {
+  max-height: var(--dialog-panel-height-lg);
+}
+
+.position-panel-bottom.size-full .content {
+  max-height: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* ============================================
+   Close Button
+   ============================================ */
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--dialog-close-bg);
+  border: 1px solid var(--dialog-close-border);
+  color: var(--dialog-foreground-muted);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.closeButton:hover {
+  background: var(--dialog-close-bg-hover);
+  color: var(--dialog-foreground);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--dialog-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Drag Handle (Mobile swipe indicator)
+   ============================================ */
+
+.dragHandle {
+  display: none;
+  justify-content: center;
+  padding: 8px 0 4px;
+  cursor: grab;
+}
+
+.dragHandleBar {
+  width: var(--dialog-drag-handle-width);
+  height: var(--dialog-drag-handle-height);
+  background: var(--dialog-drag-handle-bg);
+  border-radius: 2px;
+}
+
+/* Show drag handle on mobile for bottom-positioned dialogs */
+@media (max-width: 640px) {
+  .position-center .dragHandle,
+  .position-bottom-left .dragHandle,
+  .position-bottom-right .dragHandle,
+  .position-panel-bottom .dragHandle {
+    display: flex;
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+/* Backdrop */
+@keyframes backdrop-fade-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(var(--dialog-backdrop-blur));
+  }
+}
+
+@keyframes backdrop-fade-out {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(var(--dialog-backdrop-blur));
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+}
+
+/* Center position animations */
+@keyframes fade-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Vertical slide animations */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slide-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-to-top {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* Horizontal slide animations */
+@keyframes slide-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Corner fade-slide animations (desktop) */
+@keyframes fade-slide-in-top-left {
+  from {
+    opacity: 0;
+    transform: translate(-10px, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fade-slide-out-top-left {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-10px, -10px);
+  }
+}
+
+@keyframes fade-slide-in-top-right {
+  from {
+    opacity: 0;
+    transform: translate(10px, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fade-slide-out-top-right {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(10px, -10px);
+  }
+}
+
+@keyframes fade-slide-in-bottom-left {
+  from {
+    opacity: 0;
+    transform: translate(-10px, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fade-slide-out-bottom-left {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-10px, 10px);
+  }
+}
+
+@keyframes fade-slide-in-bottom-right {
+  from {
+    opacity: 0;
+    transform: translate(10px, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fade-slide-out-bottom-right {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(10px, 10px);
+  }
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+
+.content::-webkit-scrollbar {
+  width: var(--dialog-scrollbar-width);
+}
+
+.content::-webkit-scrollbar-track {
+  background: var(--dialog-scrollbar-track);
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: var(--dialog-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: var(--dialog-scrollbar-thumb-hover);
+}

@@ -1,0 +1,429 @@
+.contactPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Contact Methods Grid */
+.contactMethods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.methodCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.methodCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.methodIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.methodTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.methodContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.phoneLink,
+.emailLink,
+.telegramLink {
+  font-size: 1rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.phoneLink:hover,
+.emailLink:hover,
+.telegramLink:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.qrToggle,
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.qrToggle:hover,
+.copyButton:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-primary);
+}
+
+.qrCode {
+  margin-top: 16px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.qrLabel {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.address {
+  font-style: normal;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* Business Hours */
+.businessHours {
+  margin-bottom: 60px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.hoursTable {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hoursRow:last-child {
+  border-bottom: none;
+}
+
+.hoursDay {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.hoursTime {
+  color: var(--color-text-secondary);
+}
+
+/* Map Section */
+.mapSection {
+  margin-bottom: 60px;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.mapEmbed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Contact Form */
+.formSection {
+  margin-bottom: 60px;
+}
+
+.contactForm {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.input,
+.textarea {
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.input:hover,
+.textarea:hover {
+  border-color: var(--color-text-secondary);
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.phoneInput {
+  width: 100%;
+}
+
+.errorMessage {
+  font-size: 0.875rem;
+  color: var(--color-error);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.submitButton {
+  min-width: 200px;
+}
+
+/* Social Media */
+.socialSection {
+  margin-bottom: 60px;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text);
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.socialLink:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contactPage {
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .contactMethods {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .methodCard {
+    padding: 24px 20px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contactForm {
+    padding: 24px 20px;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .hoursRow {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .methodIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .methodTitle {
+    font-size: 1.125rem;
+  }
+
+  .socialLink {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .methodCard,
+  .hoursTable,
+  .contactForm {
+    background: var(--color-surface-dark, #1a1a1a);
+    border-color: var(--color-border-dark, #333);
+  }
+
+  .qrCode {
+    background: #fff;
+  }
+
+  .methodCard:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .qrToggle,
+  .copyButton,
+  .formSection {
+    display: none;
+  }
+
+  .contactPage {
+    padding: 20px;
+  }
+
+  .methodCard {
+    page-break-inside: avoid;
+  }
+}

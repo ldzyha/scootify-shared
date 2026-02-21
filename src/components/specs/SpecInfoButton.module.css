@@ -1,0 +1,86 @@
+/**
+ * SpecInfoButton component styles
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0 0 0 var(--space-1, 4px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary, #666);
+  transition: color 0.2s ease, transform 0.2s ease;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
+.button:hover {
+  color: var(--color-primary, #0066cc);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+/* Size variants */
+.size-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.size-md {
+  width: 20px;
+  height: 20px;
+}
+
+/* Dialog content */
+.dialogContent {
+  padding: var(--space-4, 16px);
+  max-width: 400px;
+}
+
+.title {
+  margin: 0 0 var(--space-2, 8px);
+  font-size: var(--font-size-lg, 18px);
+  font-weight: 600;
+  color: var(--color-text-primary, #000);
+}
+
+.label {
+  display: inline-block;
+  padding: var(--space-1, 4px) var(--space-2, 8px);
+  margin-bottom: var(--space-3, 12px);
+  background: var(--color-bg-secondary, #f5f5f5);
+  border-radius: var(--radius-sm, 4px);
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 500;
+  color: var(--color-text-secondary, #666);
+  font-family: 'Courier New', monospace;
+}
+
+.explanation {
+  margin: 0 0 var(--space-3, 12px);
+  font-size: var(--font-size-base, 16px);
+  line-height: 1.6;
+  color: var(--color-text-primary, #000);
+}
+
+.example {
+  padding: var(--space-3, 12px);
+  background: var(--color-bg-accent, #f0f9ff);
+  border-left: 3px solid var(--color-primary, #0066cc);
+  border-radius: var(--radius-sm, 4px);
+  font-size: var(--font-size-sm, 14px);
+  line-height: 1.5;
+  color: var(--color-text-secondary, #333);
+}
+
+.example strong {
+  color: var(--color-primary, #0066cc);
+  font-weight: 600;
+}
