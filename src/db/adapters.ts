@@ -78,7 +78,7 @@ export function toComponentProduct(product: Product): OldProduct {
       : undefined,
     
     // Related products
-    relatedProducts: product.relatedProductIds.length > 0 ? product.relatedProductIds : undefined,
+    relatedProducts: product.relatedProductIds?.length > 0 ? product.relatedProductIds : undefined,
     
     // Rating
     rating: product.rating
