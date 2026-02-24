@@ -63,10 +63,12 @@ export type MetallicBaseVariant = keyof typeof metallicBase;
 export type MetallicVariant = MetallicBaseVariant | 'brandBg' | 'brandText';
 export type MetallicSubtleVariant = keyof typeof metallicSubtle;
 
+import type { ThemeId } from '../types/site-config';
+
 /**
  * Default metallic palettes for each site
  */
-export const siteMetallics = {
+export const siteMetallics: Record<ThemeId, ReturnType<typeof createMetallicPalette>> = {
   hiley: createMetallicPalette(
     'linear-gradient(90deg, #1a4a7c 0%, #3080c0 25%, #50a0e0 50%, #d4a030 75%, #ffd860 100%)',
     'linear-gradient(90deg, #4090d0 0%, #60b0f0 25%, #80d0ff 50%, #ffd860 75%, #ffe880 100%)'
@@ -86,3 +88,11 @@ export const siteMetallics = {
     'linear-gradient(90deg, #c8a030 0%, #e8c050 25%, #ffd860 50%, #e8c050 75%, #c8a030 100%)'
   ),
 };
+
+/**
+ * Get metallic palette by theme ID.
+ * Convenience for site configs and components.
+ */
+export function getMetallicPalette(themeId: ThemeId) {
+  return siteMetallics[themeId];
+}

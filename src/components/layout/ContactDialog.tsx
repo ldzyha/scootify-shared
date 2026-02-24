@@ -289,7 +289,7 @@ interface ContactRowProps {
   external?: boolean;
   isDesktop?: boolean;
   onShowQR?: () => void;
-  metallicGradients?: Record<MetallicVariant, string>;
+  metallicGradients?: Record<string, string | undefined>;
 }
 
 function ContactRow({

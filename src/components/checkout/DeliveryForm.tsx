@@ -145,7 +145,7 @@ export function DeliveryForm({
     const warehouse = warehousesHook.warehouses.find(w => w.ref === warehouseRef);
     onChange({
       ...value,
-      warehouse: warehouse ? { ref: warehouse.ref, name: warehouse.description, number: warehouse.number } : null,
+      warehouse: warehouse ? { ref: warehouse.ref, name: warehouse.name || '', number: warehouse.number } : null,
     });
   };
 
@@ -230,11 +230,11 @@ export function DeliveryForm({
                 {citiesHook.cities.map((city) => (
                   <li
                     key={city.ref}
-                    onClick={() => handleCitySelect({ ref: city.ref, name: city.description, region: city.area })}
+                    onClick={() => handleCitySelect({ ref: city.ref, name: city.name, region: city.area })}
                     className={styles.dropdownItem}
                     role="option"
                   >
-                    <span className={styles.dropdownItemName}>{city.description}</span>
+                    <span className={styles.dropdownItemName}>{city.name}</span>
                     {city.area && (
                       <span className={styles.dropdownItemMeta}>{city.area}</span>
                     )}
@@ -268,7 +268,7 @@ export function DeliveryForm({
               <option value="">Оберіть відділення...</option>
               {warehousesHook.warehouses.map((warehouse) => (
                 <option key={warehouse.ref} value={warehouse.ref}>
-                  {warehouse.description}
+                  {warehouse.name || `Відділення ${warehouse.number}`}
                 </option>
               ))}
             </select>
@@ -309,11 +309,11 @@ export function DeliveryForm({
                     {streetsHook.streets.map((street) => (
                       <li
                         key={street.ref}
-                        onClick={() => handleStreetSelect({ ref: street.ref, name: street.description })}
+                        onClick={() => handleStreetSelect({ ref: street.ref, name: street.name })}
                         className={styles.dropdownItem}
                         role="option"
                       >
-                        {street.description}
+                        {street.name}
                       </li>
                     ))}
                   </ul>

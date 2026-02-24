@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { formatUAH, formatUSD, type FormattedPrice } from '@scootify/shared/lib/currency';
 import { MetallicText } from './MetallicText';
+import { Icon } from './Icon';
 import type { MetallicVariant } from '@scootify/shared/lib/metallic';
 
 /**
@@ -63,6 +65,8 @@ export interface PriceProps {
   metallicVariant?: MetallicVariant;
   /** Show discount badge */
   showDiscountBadge?: boolean;
+  /** Show approximate symbol and info icon for consultation model products */
+  approximate?: boolean;
   /** Additional CSS classes */
   className?: string;
   /** Custom primary price formatter (defaults to UAH) */
@@ -99,20 +103,14 @@ const SIZE_CLASSES = {
 };
 
 /**
- * Price display component with dual currency support
+ * Price display component with dual currency support.
  *
- * Shows price with primary currency (large, metallic) and secondary currency (smaller, muted).
+ * STACKED LAYOUT: UAH on top (primary, large, metallic), USD below (secondary, smaller, muted).
+ * Never places currencies side-by-side to prevent text overlapping.
+ *
  * Supports discount display with original price crossed out and optional percentage badge.
  *
- * Features:
- * - Customizable formatters for both currencies
- * - Screen reader accessible with sr-only text
- * - Metallic gradient text for primary price
- * - Responsive sizing (sm/md/lg/xl)
- * - Discount badge with percentage
- *
  * @example
- * // Simple price with defaults (UAH primary, USD secondary)
  * <Price primaryCents={415000} secondaryCents={9999} />
  *
  * @example
@@ -124,15 +122,6 @@ const SIZE_CLASSES = {
  *   originalSecondaryCents={13999}
  *   showDiscountBadge
  * />
- *
- * @example
- * // Custom formatters
- * <Price
- *   primaryCents={9999}
- *   secondaryCents={415000}
- *   formatPrimary={(cents) => ({ amount: cents/100, formatted: `€${cents/100}`, currency: 'EUR', symbol: '€' })}
- *   formatSecondary={(cents) => ({ amount: cents/100, formatted: `£${cents/100}`, currency: 'GBP', symbol: '£' })}
- * />
  */
 export function Price({
   primaryCents,
@@ -142,6 +131,7 @@ export function Price({
   size = 'md',
   metallicVariant = 'gold',
   showDiscountBadge = true,
+  approximate = false,
   className = '',
   formatPrimary = defaultFormatPrimary,
   formatSecondary = defaultFormatSecondary,
@@ -149,8 +139,8 @@ export function Price({
   const classes = SIZE_CLASSES[size];
   const primary = formatPrimary(primaryCents);
   const secondary = formatSecondary(secondaryCents);
+  const [showInfo, setShowInfo] = useState(false);
 
-  // Calculate discount if both original prices provided
   const hasDiscount =
     originalPrimaryCents &&
     originalSecondaryCents &&
@@ -161,6 +151,10 @@ export function Price({
     : 0;
 
   const originalPrimary = hasDiscount ? formatPrimary(originalPrimaryCents) : null;
+
+  const handleInfoClick = () => {
+    setShowInfo(!showInfo);
+  };
 
   return (
     <div className={`inline-flex flex-col gap-0.5 ${className}`}>
@@ -175,7 +169,6 @@ export function Price({
               >
                 -{discountPercentage}%
               </span>
-              {/* Screen reader text for discount context */}
               <span className="sr-only">
                 Original price: {originalPrimary.formatted}
               </span>
@@ -185,51 +178,72 @@ export function Price({
             className={`${classes.original} text-foreground-muted line-through`}
             aria-hidden="true"
           >
-            {originalPrimary.formatted}
+            {approximate && '\u2248 '}{originalPrimary.formatted}
           </span>
         </div>
       )}
 
-      {/* Primary price - metallic, large */}
-      <MetallicText variant={metallicVariant} className={`${classes.primary} font-bold`}>
-        {primary.formatted}
-      </MetallicText>
+      {/* Primary price (UAH) — own line, metallic, large */}
+      <div className="flex items-center gap-2 relative">
+        <MetallicText variant={metallicVariant} className={`${classes.primary} font-bold`}>
+          {approximate && '\u2248 '}{primary.formatted}
+        </MetallicText>
+        {approximate && (
+          <>
+            <button
+              onClick={handleInfoClick}
+              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-surface hover:bg-surface-hover transition-colors"
+              aria-label="Information about the price"
+              title="Why approximate price?"
+            >
+              <Icon name="info" size="xs" className="text-foreground-muted" />
+            </button>
+            {showInfo && (
+              <div className="absolute left-0 top-full mt-2 w-72 p-4 bg-surface border border-border rounded-lg shadow-xl z-50">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="font-semibold text-sm">Approximate price</h4>
+                  <button
+                    onClick={() => setShowInfo(false)}
+                    className="text-foreground-muted hover:text-foreground"
+                    aria-label="Close"
+                  >
+                    {'\u2715'}
+                  </button>
+                </div>
+                <p className="text-sm text-foreground-muted leading-relaxed mb-2">
+                  This is an approximate price from open sources. For the exact cost and current
+                  delivery terms, please contact the official distributor.
+                </p>
+                <p className="text-xs text-foreground-muted">
+                  The final price may differ depending on configuration, exchange rate, and current promotions.
+                </p>
+              </div>
+            )}
+          </>
+        )}
+      </div>
 
-      {/* Secondary price - muted, smaller */}
+      {/* Secondary price (USD) — own line below, smaller, muted */}
       <span className={`${classes.secondary} text-foreground-muted`}>
-        {secondary.formatted}
+        {approximate && '\u2248 '}{secondary.formatted}
       </span>
 
-      {/* Screen reader text for full price */}
+      {/* Screen reader text */}
       <span className="sr-only">
-        Price: {primary.formatted} or {secondary.formatted}
+        {approximate && 'Approximate price: '}Price: {primary.formatted} or {secondary.formatted}
       </span>
     </div>
   );
 }
 
 /**
- * Inline price display with horizontal layout
+ * Inline price display — still stacked (UAH top, USD bottom) but more compact.
  *
- * Displays price information in a single line with primary price emphasized,
- * secondary price in parentheses, and optional original price crossed out.
- *
- * Features:
- * - Horizontal layout for compact spaces
- * - No discount badge (cleaner inline appearance)
- * - Metallic gradient for primary price
- * - Screen reader accessible
+ * Use for product lists, comparison rows, or anywhere space is tight but
+ * dual-currency display is needed. Original price shown inline with current.
  *
  * @example
  * <PriceInline primaryCents={415000} secondaryCents={9999} />
- *
- * @example
- * <PriceInline
- *   primaryCents={415000}
- *   secondaryCents={9999}
- *   originalPrimaryCents={550000}
- *   originalSecondaryCents={13999}
- * />
  */
 export function PriceInline({
   primaryCents,
@@ -254,33 +268,32 @@ export function PriceInline({
   const originalPrimary = hasDiscount ? formatPrimary(originalPrimaryCents) : null;
 
   return (
-    <div className={`inline-flex items-baseline gap-2 flex-wrap ${className}`}>
-      {/* Original price if discounted */}
-      {hasDiscount && originalPrimary && (
-        <>
-          <span
-            className={`${classes.original} text-foreground-muted line-through`}
-            aria-hidden="true"
-          >
-            {originalPrimary.formatted}
-          </span>
-          <span className="sr-only">
-            Original price: {originalPrimary.formatted}.
-          </span>
-        </>
-      )}
+    <div className={`inline-flex flex-col gap-0.5 ${className}`}>
+      {/* Primary price row: original (struck) + current */}
+      <div className="flex items-baseline gap-2 flex-wrap">
+        {hasDiscount && originalPrimary && (
+          <>
+            <span
+              className={`${classes.original} text-foreground-muted line-through`}
+              aria-hidden="true"
+            >
+              {originalPrimary.formatted}
+            </span>
+            <span className="sr-only">
+              Original price: {originalPrimary.formatted}.
+            </span>
+          </>
+        )}
+        <MetallicText variant={metallicVariant} className={`${classes.primary} font-bold`}>
+          {primary.formatted}
+        </MetallicText>
+      </div>
 
-      {/* Primary price */}
-      <MetallicText variant={metallicVariant} className={`${classes.primary} font-bold`}>
-        {primary.formatted}
-      </MetallicText>
-
-      {/* Secondary price in parentheses */}
+      {/* Secondary price — always on its own line below */}
       <span className={`${classes.secondary} text-foreground-muted`}>
-        ({secondary.formatted})
+        {secondary.formatted}
       </span>
 
-      {/* Screen reader text */}
       <span className="sr-only">
         {hasDiscount ? 'Sale price: ' : 'Price: '}
         {primary.formatted} or {secondary.formatted}
@@ -290,27 +303,13 @@ export function PriceInline({
 }
 
 /**
- * Compact price display for lists and cards
+ * Compact price display for lists and cards.
  *
- * Two-line vertical layout with primary price and discount on first line,
- * secondary price (with ≈ prefix) on second line. Optimized for card layouts.
- *
- * Features:
- * - Compact two-line layout
- * - Fixed size (no size prop)
- * - Metallic gradient for primary price
- * - Approximate symbol (≈) for secondary price
+ * Two-line vertical layout: UAH on top, USD below with approximate prefix.
+ * Optimized for card layouts where space is constrained.
  *
  * @example
  * <PriceCompact primaryCents={415000} secondaryCents={9999} />
- *
- * @example
- * <PriceCompact
- *   primaryCents={415000}
- *   secondaryCents={9999}
- *   originalPrimaryCents={550000}
- *   originalSecondaryCents={13999}
- * />
  */
 export function PriceCompact({
   primaryCents,
@@ -344,24 +343,28 @@ export function PriceCompact({
 
   return (
     <div className={`inline-flex flex-col ${className}`}>
-      <div className="flex items-center gap-2">
-        {hasDiscount && originalPrimary && (
-          <>
-            <span className="text-sm text-foreground-muted line-through" aria-hidden="true">
-              {originalPrimary.formatted}
-            </span>
-            <span className="sr-only">
-              Original price: {originalPrimary.formatted}.
-            </span>
-          </>
-        )}
-        <MetallicText variant={metallicVariant} className="text-lg font-bold">
-          {primary.formatted}
-        </MetallicText>
-      </div>
+      {/* Original price row (if discounted) */}
+      {hasDiscount && originalPrimary && (
+        <>
+          <span className="text-sm text-foreground-muted line-through" aria-hidden="true">
+            {originalPrimary.formatted}
+          </span>
+          <span className="sr-only">
+            Original price: {originalPrimary.formatted}.
+          </span>
+        </>
+      )}
+
+      {/* Primary price (UAH) — own line */}
+      <MetallicText variant={metallicVariant} className="text-lg font-bold">
+        {primary.formatted}
+      </MetallicText>
+
+      {/* Secondary price (USD) — own line below */}
       <span className="text-xs text-foreground-muted">
-        ≈ {secondary.formatted}
+        {'\u2248'} {secondary.formatted}
       </span>
+
       <span className="sr-only">
         {hasDiscount ? 'Sale price: ' : 'Price: '}
         {primary.formatted}, approximately {secondary.formatted}
@@ -371,28 +374,14 @@ export function PriceCompact({
 }
 
 /**
- * Tile price display for product cards
+ * Tile price display for product grid cards.
  *
- * Prominent, bold price display optimized for product grid tiles.
- * Primary price is large and responsive, secondary price is inline.
- *
- * Features:
- * - Large, responsive primary price
- * - Inline secondary price
- * - Original price shown above if discounted
- * - Metallic gradient for emphasis
- * - Responsive text sizing (scales on sm+ screens)
+ * STACKED layout: UAH on top (large, bold, metallic), USD below (smaller, muted).
+ * Original price shown above both if discounted.
+ * Responsive text sizing scales on sm+ screens.
  *
  * @example
  * <PriceTile primaryCents={415000} secondaryCents={9999} />
- *
- * @example
- * <PriceTile
- *   primaryCents={415000}
- *   secondaryCents={9999}
- *   originalPrimaryCents={550000}
- *   originalSecondaryCents={13999}
- * />
  */
 export function PriceTile({
   primaryCents,
@@ -426,7 +415,7 @@ export function PriceTile({
 
   return (
     <div className={`flex flex-col gap-0.5 ${className}`}>
-      {/* Original price if discounted - above current price */}
+      {/* Original price if discounted — top line */}
       {hasDiscount && originalPrimary && (
         <>
           <span className="text-sm text-foreground-muted line-through" aria-hidden="true">
@@ -437,19 +426,20 @@ export function PriceTile({
           </span>
         </>
       )}
-      {/* Primary price - large and bold, responsive */}
-      <div className="flex items-baseline gap-2">
-        <MetallicText
-          variant={metallicVariant}
-          className="text-xl sm:text-2xl font-bold tracking-tight"
-        >
-          {primary.formatted}
-        </MetallicText>
-        {/* Secondary price - smaller, inline */}
-        <span className="text-xs text-foreground-muted">
-          {secondary.formatted}
-        </span>
-      </div>
+
+      {/* Primary price (UAH) — own line, large, bold */}
+      <MetallicText
+        variant={metallicVariant}
+        className="text-xl sm:text-2xl font-bold tracking-tight"
+      >
+        {primary.formatted}
+      </MetallicText>
+
+      {/* Secondary price (USD) — own line below, smaller */}
+      <span className="text-xs text-foreground-muted">
+        {secondary.formatted}
+      </span>
+
       <span className="sr-only">
         {hasDiscount ? 'Sale price: ' : 'Price: '}
         {primary.formatted}, or {secondary.formatted}

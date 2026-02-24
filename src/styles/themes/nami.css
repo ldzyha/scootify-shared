@@ -1,0 +1,71 @@
+/* ============================================================
+   NAMI Theme — Cyan + Orange Ocean
+   Cool aquatic primary, warm orange accent
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --primary: #00bcd4;
+  --primary-dark: #008ba3;
+  --primary-light: #33c9dc;
+  --primary-hover: #008ba3;
+  --primary-alpha-10: rgba(0, 188, 212, 0.1);
+
+  --secondary: #ff6f00;
+  --secondary-dark: #c43e00;
+  --secondary-light: #ff9e40;
+  --accent: #ff6f00;
+
+  /* Surfaces */
+  --background: #0a0a0a;
+  --background-surface: #1a1a1a;
+  --background-elevated: #141414;
+  --background-elevated-hover: #1e1e1e;
+
+  --foreground: #ffffff;
+  --foreground-muted: #a0a0a0;
+
+  --surface: #1a1a1a;
+  --surface-hover: #252525;
+
+  /* Semantic Colors — aliased */
+  --color-primary-rgb: 0, 188, 212;
+  --color-error-rgb: 239, 68, 68;
+
+  /* Metallic Palette */
+  --silver-dark: #8a8a8a;
+  --silver: #c0c0c0;
+  --silver-light: #e8e8e8;
+  --platinum-dark: #6a6a6a;
+  --platinum: #7a7a7a;
+  --platinum-light: #a8a8a8;
+  --blue-metal-dark: #1a3a5c;
+  --blue-metal: #4a7eb8;
+  --blue-metal-light: #8bb8e8;
+  --gold-metal-dark: #8b7355;
+  --gold-metal: #d4af37;
+  --gold-metal-light: #f5e6a3;
+
+  /* Metallic Gradients */
+  --gradient-silver: linear-gradient(135deg, #8a8a8a 0%, #c0c0c0 50%, #e8e8e8 100%);
+  --gradient-blue-metal: linear-gradient(135deg, #1a3a5c 0%, #4a7eb8 50%, #8bb8e8 100%);
+  --gradient-gold-metal: linear-gradient(135deg, #8b7355 0%, #d4af37 50%, #f5e6a3 100%);
+
+  /* Brand Gradients */
+  --gradient-brand: linear-gradient(90deg, #00bcd4 0%, #26c6da 25%, #4dd0e1 50%, #26c6da 75%, #00bcd4 100%);
+  --gradient-primary: linear-gradient(135deg, #008ba3 0%, #00bcd4 50%, #33c9dc 100%);
+  --gradient-hero: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+
+  /* Effects */
+  --glow-primary: rgba(0, 188, 212, 0.4);
+  --glow-secondary: rgba(255, 111, 0, 0.4);
+  --glow-brand: rgba(0, 188, 212, 0.3);
+
+  /* Component Overrides */
+  --tile-glow-hover: rgba(0, 188, 212, 0.25);
+  --tile-border-hover: rgba(0, 188, 212, 0.3);
+  --variant-pill-border-active: #00bcd4;
+  --swatch-border-active: #00bcd4;
+  --swatch-shadow-active: rgba(0, 188, 212, 0.4);
+  --dialog-primary: #00bcd4;
+}

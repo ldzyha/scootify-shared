@@ -1,0 +1,78 @@
+/* ============================================================
+   SCOOTIFY Theme — Dark Luxury Gold
+   Premium gold-centric, slightly purple-tinted dark background
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --primary: #BF953F;
+  --primary-dark: #AA771C;
+  --primary-light: #FCF6BA;
+  --primary-hover: #AA771C;
+  --primary-alpha-10: rgba(191, 149, 63, 0.1);
+
+  --secondary: #B38728;
+  --accent: #BF953F;
+
+  /* Luxury Gold Gradient Stops (Scootify-specific) */
+  --gold-dark: #AA771C;
+  --gold-medium: #B38728;
+  --gold-primary: #BF953F;
+  --gold-light: #FBF5B7;
+  --gold-highlight: #FCF6BA;
+
+  /* Surfaces — purple-tinted dark */
+  --background: #0f0f14;
+  --background-surface: #1a1a24;
+  --background-elevated: #161620;
+  --background-elevated-hover: #1e1e2a;
+
+  --foreground: #fafafa;
+  --foreground-muted: #a0a0a0;
+
+  --surface: #1a1a24;
+  --surface-hover: #252530;
+
+  /* Semantic Colors — aliased */
+  --color-primary-rgb: 191, 149, 63;
+  --color-error-rgb: 239, 68, 68;
+
+  /* Scootify Neutrals (used by site CSS) */
+  --gray-950: #0f0f14;
+  --gray-900: #161620;
+  --gray-850: #1c1c28;
+  --gray-800: #1e1e28;
+  --gray-700: #2a2a35;
+  --gray-600: #3a3a48;
+
+  /* Metallic Palette */
+  --silver: #C0C0C0;
+  --platinum: #E5E4E2;
+  --rose-gold: #b76e79;
+
+  /* Luxury Gold Gradients */
+  --luxury-gold: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+  --luxury-gold-hover: linear-gradient(135deg, #D4A84A 0%, #FFF8CC 25%, #C99A35 50%, #FFF7C8 75%, #BB8825 100%);
+  --luxury-gold-vertical: linear-gradient(180deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+
+  /* Brand Gradients */
+  --gradient-brand: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+  --gradient-primary: linear-gradient(135deg, #AA771C 0%, #BF953F 50%, #FCF6BA 100%);
+  --gradient-hero: linear-gradient(180deg, #0f0f14 0%, #1a1a24 100%);
+
+  /* Effects */
+  --glow-primary: rgba(191, 149, 63, 0.4);
+  --glow-secondary: rgba(191, 149, 63, 0.3);
+  --glow-brand: rgba(191, 149, 63, 0.3);
+
+  /* Component Overrides */
+  --tile-glow-hover: rgba(191, 149, 63, 0.25);
+  --tile-border-hover: rgba(191, 149, 63, 0.3);
+  --tile-bg-start: rgba(255, 255, 255, 0.02);
+  --tile-bg-end: rgba(26, 26, 36, 0.8);
+  --variant-pill-border-active: #BF953F;
+  --swatch-border-active: #BF953F;
+  --swatch-shadow-active: rgba(191, 149, 63, 0.4);
+  --dialog-primary: #BF953F;
+  --dialog-surface: #1a1a24;
+}

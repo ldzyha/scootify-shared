@@ -34,9 +34,18 @@ export interface BrandColors {
 }
 
 export interface MetallicGradients {
+  blue?: string;
+  gold?: string;
+  silver?: string;
+  red?: string;
+  green?: string;
   brandBg: string;
   brandText: string;
+  [key: string]: string | undefined; // Index signature for compatibility
 }
+
+/** Theme IDs matching shared/src/styles/themes/*.css */
+export type ThemeId = 'hiley' | 'hysco' | 'nami' | 'scootify';
 
 export interface SiteConfig {
   // Brand identity
@@ -63,6 +72,11 @@ export interface SiteConfig {
   logoWidth?: number;
   logoHeight?: number;
   
+  // Theme — identifies which CSS theme file to use
+  theme: {
+    id: ThemeId;
+  };
+  
   // Currency
   defaultCurrency: 'UAH' | 'USD';
   fallbackExchangeRate: number; // UAH per 1 USD
@@ -76,6 +90,8 @@ export interface SiteConfig {
     checkout?: boolean;
     search?: boolean;
     telegramBot?: boolean;
+    /** Enables consultation CTA (connect with distributor) */
+    consultation?: boolean;
   };
   
   // Order prefix (e.g., 'HL-', 'NM-', 'HY-', 'SF-')

@@ -1,0 +1,1 @@
+import './scootify.css';

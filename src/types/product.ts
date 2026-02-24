@@ -142,6 +142,7 @@ export interface Product {
   youtubeVideoId?: string;
   variants?: ProductVariant[];
   colors?: string[];
+  colorHexMap?: Record<string, string>;
   colorImages?: Record<string, ProductImage[]>;
   specs?: ProductSpecs;
   warranty?: ProductWarranty;
@@ -175,6 +176,7 @@ export interface ProductTileData {
   variantCapacities?: number[];
   variantPrices?: number[];
   colors?: string[];
+  colorHexMap?: Record<string, string>;
   colorImages?: Record<string, string>;
   defaultColor?: string;
 }

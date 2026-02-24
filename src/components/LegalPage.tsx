@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, useMemo } from 'react';
 import { legalPages, LegalPage as LegalPageData } from '@scootify/shared/data/legal-pages';
 import { SiteConfig } from '@scootify/shared/types/site-config';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Price } from '../Price';
+import { Price, type PriceFormatter } from '../Price';
 import { MetallicButton } from '../MetallicButton';
 import { Icon } from '../Icon';
 import styles from './CartSummary.module.css';
@@ -61,8 +61,8 @@ export interface CartSummaryProps {
   /** Loading state for checkout button */
   isCheckoutLoading?: boolean;
   /** Optional custom formatters for Price component */
-  formatPrimary?: (cents: number) => { amount: number; formatted: string; currency: string; symbol: string };
-  formatSecondary?: (cents: number) => { amount: number; formatted: string; currency: string; symbol: string };
+  formatPrimary?: PriceFormatter;
+  formatSecondary?: PriceFormatter;
 }
 
 export function CartSummary({

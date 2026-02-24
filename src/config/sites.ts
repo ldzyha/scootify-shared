@@ -25,12 +25,13 @@ export const hileyConfig: SiteConfig = {
     country: 'Україна',
     countryCode: 'UA',
   },
+  theme: { id: 'hiley' },
   metallicGradients: {
     brandBg: siteMetallics.hiley.brandBg,
     brandText: siteMetallics.hiley.brandText,
   },
   defaultCurrency: 'UAH',
-  fallbackExchangeRate: 42.25,
+  fallbackExchangeRate: 43.5,
   productUrlPattern: '/product/:slug',
   orderPrefix: 'HL-',
   storeCity: {
@@ -42,6 +43,7 @@ export const hileyConfig: SiteConfig = {
     checkout: true,
     search: true,
     telegramBot: true,
+    consultation: true,
   },
 };
 
@@ -61,12 +63,13 @@ export const scootifyConfig: SiteConfig = {
       group: 'https://t.me/scootify_eco',
     },
   },
+  theme: { id: 'scootify' },
   metallicGradients: {
     brandBg: siteMetallics.scootify.brandBg,
     brandText: siteMetallics.scootify.brandText,
   },
   defaultCurrency: 'UAH',
-  fallbackExchangeRate: 42.25,
+  fallbackExchangeRate: 43.5,
   productUrlPattern: '/tovary/:slug/',
   orderPrefix: 'SF-',
   storeCity: {
@@ -78,6 +81,7 @@ export const scootifyConfig: SiteConfig = {
     checkout: true,
     search: true,
     telegramBot: true,
+    consultation: true,
   },
 };
 
@@ -97,12 +101,13 @@ export const namiConfig: SiteConfig = {
       group: 'https://t.me/scootify_eco',
     },
   },
+  theme: { id: 'nami' },
   metallicGradients: {
     brandBg: siteMetallics.nami.brandBg,
     brandText: siteMetallics.nami.brandText,
   },
   defaultCurrency: 'UAH',
-  fallbackExchangeRate: 42.25,
+  fallbackExchangeRate: 43.5,
   productUrlPattern: '/product/:slug',
   orderPrefix: 'NM-',
   features: {
@@ -110,6 +115,7 @@ export const namiConfig: SiteConfig = {
     checkout: false,
     search: false,
     telegramBot: true,
+    consultation: true,
   },
 };
 
@@ -129,12 +135,13 @@ export const hyscoConfig: SiteConfig = {
       group: 'https://t.me/scootify_eco',
     },
   },
+  theme: { id: 'hysco' },
   metallicGradients: {
     brandBg: siteMetallics.hysco.brandBg,
     brandText: siteMetallics.hysco.brandText,
   },
   defaultCurrency: 'UAH',
-  fallbackExchangeRate: 42.25,
+  fallbackExchangeRate: 43.5,
   productUrlPattern: '/product/:slug',
   orderPrefix: 'HY-',
   features: {
@@ -142,5 +149,6 @@ export const hyscoConfig: SiteConfig = {
     checkout: false,
     search: false,
     telegramBot: true,
+    consultation: true,
   },
 };

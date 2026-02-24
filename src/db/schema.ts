@@ -501,6 +501,19 @@ export interface ScooterSpecs {
 /**
  * Scooter variant with specifications override capability
  */
+export interface ScooterColor {
+  /** Color identifier (e.g., 'orange', 'black') */
+  id: string;
+  /** Display name (e.g., 'Sunlight Orange') */
+  name: string;
+  /** Ukrainian name */
+  nameUk: string;
+  /** Hex color value for UI (e.g., '#FF8C42') */
+  hex: string;
+  /** Associated variant ID, if color maps to a variant */
+  variantId?: string;
+}
+
 export interface ScooterVariant {
   /** Variant unique identifier */
   id: string;
@@ -555,8 +568,8 @@ export interface Scooter extends BaseProduct {
   /** Available variants */
   variants: ScooterVariant[];
   
-  /** Available colors */
-  colors: string[];
+  /** Available colors (string IDs or full Color objects with hex) */
+  colors: (string | ScooterColor)[];
   
   /** Key highlights/features in English */
   highlights: string[];

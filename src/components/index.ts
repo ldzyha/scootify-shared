@@ -45,7 +45,7 @@ export {
 } from './Price';
 
 // QuantitySelector - Increment/decrement quantity input
-export { QuantitySelector, type QuantitySelectorProps } from './QuantitySelector';
+export { QuantitySelector } from './QuantitySelector';
 
 // VideoEmbed - YouTube/Vimeo video embed with lazy loading
 export { VideoEmbed, type VideoEmbedProps, type VideoEmbedHandle } from './VideoEmbed';
@@ -80,10 +80,10 @@ export {
 } from './FloatingContactButton';
 
 // Picture - Responsive image with srcset
-export { Picture, type PictureProps } from './Picture';
+export { Picture } from './Picture';
 
 // ProductImage - Product image with zoom and variants
-export { ProductImage, type ProductImageProps } from './ProductImage';
+export { ProductImage } from './ProductImage';
 
 // Toast - Toast notification component
 export { Toast, type ToastProps } from './Toast';
@@ -95,6 +95,9 @@ export {
   type VariantSelectorProps,
   type VariantOption,
 } from './VariantSelector';
+
+// CallbackRequest - Phone callback form with Ukrainian phone validation
+export { CallbackRequest, type CallbackRequestProps } from './CallbackRequest';
 
 // ============================================
 // COMPOSITE COMPONENTS
@@ -111,10 +114,16 @@ export {
 } from './Carousel';
 
 // CompareTable - Product comparison table
-export { CompareTable, type CompareTableProps, type CompareProduct } from './CompareTable';
+export { default as CompareTable } from './CompareTable';
 
 // ConsultationCTA - Call-to-action for consultations
 export { ConsultationCTA, type ConsultationCTAProps } from './ConsultationCTA';
+
+// ProductConsultationCTA - One-click callback form for product pages
+export { ProductConsultationCTA, type ProductConsultationCTAProps } from './ProductConsultationCTA';
+
+// ConsultationDialog - Dialog for consultation requests
+export { ConsultationDialog, type ConsultationDialogProps, type ConsultationFormData } from './ConsultationDialog';
 
 // JsonLd - Structured data / JSON-LD schema
 export {
@@ -130,6 +139,9 @@ export {
 
 // ProductGrid - Grid of product tiles
 export { ProductGrid, type ProductGridProps, type Product } from './ProductGrid';
+
+// ProductTerms - Product terms accordion (delivery, payment, warranty, return)
+export { ProductTerms, type ProductTermsProps } from './ProductTerms';
 
 // ProductTile - Individual product card
 export { ProductTile, type ProductTileProps, type ProductTileVariant } from './ProductTile';
@@ -187,6 +199,7 @@ export {
   type FooterContactItem,
   type FooterSocialLink,
   type FooterFeature,
+  type FooterLegalLink,
 } from './layout/Footer';
 
 // Header - Site header with navigation and search
@@ -194,6 +207,9 @@ export { Header, type HeaderProps } from './layout/Header';
 
 // PageWrapper - Page layout wrapper
 export { PageWrapper, type PageWrapperProps } from './layout/PageWrapper';
+
+// StickyCartPanel - Floating vertical cart preview
+export { StickyCartPanel, type StickyCartPanelProps, type StickyCartItem } from './StickyCartPanel';
 
 // ============================================
 // CART COMPONENTS
@@ -224,6 +240,33 @@ export { DeliveryForm, type DeliveryFormProps } from './checkout/DeliveryForm';
 
 // LegalPage - Legal pages (terms, privacy, etc.)
 export { LegalPage, type LegalPageProps, type LegalPageKey } from './LegalPage';
+
+// ============================================
+// SECTION COMPONENTS (Product page sections)
+// ============================================
+
+export {
+  BreadcrumbNav,
+  KeySpecsBadges,
+  CTAButtons,
+  GuaranteeBadges,
+  DescriptionRenderer,
+  VideoSection,
+  SimilarProductsGrid,
+  parseLinks,
+  parseBoldAndLinks,
+  type BreadcrumbNavProps,
+  type BreadcrumbNavItem,
+  type KeySpecsBadgesProps,
+  type SpecBadge,
+  type CTAButtonsProps,
+  type CTAButton,
+  type GuaranteeBadgesProps,
+  type GuaranteeBadge,
+  type DescriptionRendererProps,
+  type VideoSectionProps,
+  type SimilarProductsGridProps,
+} from './sections';
 
 // ============================================
 // UTILITIES

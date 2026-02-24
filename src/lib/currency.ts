@@ -130,7 +130,7 @@ export async function initExchangeRate(options?: {
   firestoreFunctionUrl?: string;
   fallbackRate?: number;
 }): Promise<ExchangeRates> {
-  const { firestoreFunctionUrl, fallbackRate = 42.25 } = options || {};
+  const { firestoreFunctionUrl, fallbackRate = 43.5 } = options || {};
 
   // Try Firestore first (preferred in production)
   if (firestoreFunctionUrl) {
@@ -173,7 +173,7 @@ export async function initExchangeRate(options?: {
 
 // Current exchange rates (can be updated at runtime)
 let currentRates: ExchangeRates = {
-  UAH: 42.25,
+  UAH: 43.5,
   updatedAt: new Date().toISOString(),
 };
 

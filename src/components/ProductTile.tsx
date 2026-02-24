@@ -119,12 +119,21 @@ export function ProductTile({
     .filter(Boolean)
     .join(' ');
 
-  // Handle button click
+  // Handle button click — fallback to product page navigation when no handler provided
+  const hasHandler = isConsultationOnly ? !!onRequestConsultation : !!onAddToCart;
   const handleButtonClick = () => {
     if (isConsultationOnly) {
-      onRequestConsultation?.(product);
+      if (onRequestConsultation) {
+        onRequestConsultation(product);
+      } else {
+        window.location.href = `/product/${product.slug}`;
+      }
     } else {
-      onAddToCart?.(product);
+      if (onAddToCart) {
+        onAddToCart(product);
+      } else {
+        window.location.href = `/product/${product.slug}`;
+      }
     }
   };
 
@@ -268,7 +277,7 @@ export function ProductTile({
           className={styles.actionButton}
         >
           <Icon name={isConsultationOnly ? 'phone' : 'cart'} size="sm" />
-          <span>{isConsultationOnly ? 'Консультація' : 'В кошик'}</span>
+          <span>{isConsultationOnly ? 'Консультація' : (hasHandler ? 'В кошик' : 'Детальніше')}</span>
         </MetallicButton>
       </div>
     </article>

@@ -1,0 +1,394 @@
+/* ============================================================
+   Scootify Shared — Design Tokens
+   ============================================================
+   This file defines ALL CSS custom properties used by shared
+   components. Import this file BEFORE your site theme.
+   
+   Usage in site globals.css:
+     @import '@scootify/shared/styles/tokens.css';
+     @import '@scootify/shared/styles/themes/hiley.css';
+   
+   Architecture:
+     1. Global primitives (colors, spacing, typography, borders)
+     2. Semantic aliases (bridge naming inconsistencies)
+     3. Component-scoped defaults (dialog, tile, cookie-banner, etc.)
+   ============================================================ */
+
+:root {
+  /* ========================================
+     1. BRAND COLORS
+     ======================================== */
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --primary-hover: #4f46e5;
+  --primary-alpha-10: rgba(99, 102, 241, 0.1);
+
+  --secondary: #a78bfa;
+  --accent: #c084fc;
+
+  /* ========================================
+     2. NEUTRAL / SURFACE COLORS
+     ======================================== */
+  --background: #0a0a0a;
+  --background-surface: #1a1a1a;
+  --background-elevated: #222222;
+  --background-elevated-hover: #2a2a2a;
+
+  --foreground: #f5f5f5;
+  --foreground-muted: #a0a0a0;
+
+  --surface: #1a1a1a;
+  --surface-hover: #252525;
+
+  /* ========================================
+     3. SEMANTIC STATUS COLORS
+     ======================================== */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --error-alpha-10: rgba(239, 68, 68, 0.1);
+  --info: #3b82f6;
+
+  /* ========================================
+     4. BORDER COLORS
+     ======================================== */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --border-primary: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.15);
+  --border-accent: rgba(255, 255, 255, 0.12);
+
+  /* ========================================
+     5. BORDER RADIUS
+     ======================================== */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Alias: --border-radius-* for components that use this pattern */
+  --border-radius-md: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
+
+  /* ========================================
+     6. TYPOGRAPHY
+     ======================================== */
+  /* Font family — set by site layout.tsx via next/font */
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+
+  /* Font sizes (canonical scale) */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* ========================================
+     7. SPACING (--space-* scale)
+     Used by: cart, specs, legal components
+     ======================================== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* ========================================
+     8. SPACING (--spacing-* scale)
+     Used by: checkout, telegram components
+     ======================================== */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-2-5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* ========================================
+     9. GRADIENTS
+     ======================================== */
+  --gradient-brand: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  --gradient-hero: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
+  --gradient-cta: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+
+  /* Metallic base gradients */
+  --glow-primary: rgba(99, 102, 241, 0.3);
+  --glow-brand: rgba(99, 102, 241, 0.2);
+  --glow-secondary: rgba(167, 139, 250, 0.3);
+
+  /* ========================================
+     10. SHADOWS & TRANSITIONS
+     ======================================== */
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-telegram: 0 4px 16px rgba(36, 160, 237, 0.2);
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+
+  /* ========================================
+     11. LAYOUT
+     ======================================== */
+  --content-max-width: 1200px;
+  --max-width-content: var(--content-max-width);
+  --page-spacing-x: 1rem;
+  --page-spacing-top: 2rem;
+  --page-spacing-bottom: 4rem;
+
+  /* ========================================
+     12. SEMANTIC COLOR ALIASES
+     Bridge naming inconsistencies across components.
+     All resolve to the same primitives above.
+     ======================================== */
+
+  /* --color-* prefix pattern (used by specs, legal, contact) */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-rgb: 99, 102, 241;
+  --color-background: var(--background);
+  --color-bg-primary: var(--surface);
+  --color-bg-secondary: var(--background-surface);
+  --color-bg-accent: rgba(255, 255, 255, 0.05);
+  --color-bg-hover: rgba(255, 255, 255, 0.08);
+  --color-bg-info: rgba(59, 130, 246, 0.1);
+  --color-border: var(--border);
+  --color-border-dark: rgba(255, 255, 255, 0.06);
+  --color-border-light: rgba(255, 255, 255, 0.12);
+  --color-text: var(--foreground);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--foreground-muted);
+  --color-text-tertiary: rgba(255, 255, 255, 0.4);
+  --color-surface: var(--surface);
+  --color-surface-dark: #141414;
+  --color-surface-hover: var(--surface-hover);
+  --color-error: var(--error);
+  --color-error-rgb: 239, 68, 68;
+  --color-warning: var(--warning);
+  --color-gold: #ffd700;
+  --color-green: #22c55e;
+
+  /* --bg-* short pattern (used by cart) */
+  --bg-secondary: var(--background-surface);
+  --bg-tertiary: var(--background-elevated);
+  --bg-accent: rgba(255, 255, 255, 0.06);
+  --bg-accent-hover: rgba(255, 255, 255, 0.1);
+
+  /* --text-* pattern for font sizes (used by cart) */
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+
+  /* --text-* pattern for semantic text colors (used by cart, tile) */
+  --text-primary: var(--foreground);
+  --text-secondary: var(--foreground-muted);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-accent: var(--primary-light);
+  --text-danger: var(--error);
+  --text-success: var(--success);
+  --text-link-hover: var(--primary-light);
+
+  /* ========================================
+     13. TELEGRAM PAGE TOKENS
+     ======================================== */
+  --telegram-blue: #24a0ed;
+  --telegram-blue-dark: #1a8cd8;
+  --telegram-blue-light: #5bb8f0;
+
+  /* ============================================================
+     COMPONENT-SCOPED DEFAULTS
+     These provide sensible dark-theme defaults so shared
+     components render correctly even without a site theme loaded.
+     Sites can override any of these via their theme file.
+     ============================================================ */
+
+  /* ========================================
+     PRODUCT TILE
+     ======================================== */
+  --tile-radius: 16px;
+  --tile-bg-start: rgba(255, 255, 255, 0.03);
+  --tile-bg-end: rgba(255, 255, 255, 0.01);
+  --tile-border: rgba(255, 255, 255, 0.08);
+  --tile-border-hover: rgba(255, 255, 255, 0.2);
+  --tile-shadow: rgba(0, 0, 0, 0.2);
+  --tile-shadow-hover: rgba(0, 0, 0, 0.4);
+  --tile-glow-hover: var(--glow-primary);
+  --tile-hover-lift: -4px;
+  --tile-transition-duration: 300ms;
+
+  /* Tile image area */
+  --image-bg-start: rgba(255, 255, 255, 0.02);
+  --image-bg-mid: rgba(255, 255, 255, 0.01);
+  --image-bg-end: transparent;
+  --image-padding: 16px;
+
+  /* Tile content */
+  --content-gap: 12px;
+  --content-padding: 20px;
+
+  /* Tile badges */
+  --badge-discount-start: #ef4444;
+  --badge-discount-end: #dc2626;
+  --badge-discount-shadow: rgba(239, 68, 68, 0.3);
+  --badge-stock-bg: rgba(34, 197, 94, 0.15);
+  --badge-stock-color: #22c55e;
+
+  /* Tile specs pills */
+  --spec-bg: rgba(255, 255, 255, 0.05);
+  --spec-bg-hover: rgba(255, 255, 255, 0.08);
+  --spec-border: rgba(255, 255, 255, 0.08);
+  --spec-border-hover: rgba(255, 255, 255, 0.15);
+  --spec-text: var(--foreground-muted);
+
+  /* Tile variant pills */
+  --variant-pill-bg: rgba(255, 255, 255, 0.05);
+  --variant-pill-bg-active: rgba(255, 255, 255, 0.12);
+  --variant-pill-border: rgba(255, 255, 255, 0.1);
+  --variant-pill-border-active: var(--primary);
+  --variant-pill-text: var(--foreground-muted);
+  --variant-pill-text-active: var(--foreground);
+
+  /* Tile color swatches */
+  --swatch-size: 28px;
+  --swatch-border: rgba(255, 255, 255, 0.15);
+  --swatch-border-active: var(--primary);
+  --swatch-shadow-active: var(--glow-primary);
+
+  /* ========================================
+     VARIANT SELECTOR (standalone)
+     ======================================== */
+  --variant-pill-border-radius: 10px;
+  --variant-pill-gap: 8px;
+  --variant-pill-padding: 8px 14px;
+  --variant-pill-name-color: var(--foreground);
+  --variant-pill-capacity-color: var(--foreground-muted);
+  --variant-pill-selected-name-color: var(--foreground);
+  --variant-pill-selected-capacity-color: var(--primary-light);
+  --variant-voltage-color: var(--foreground-muted);
+  --variant-focus-outline-color: var(--primary);
+
+  /* ========================================
+     DIALOG
+     ======================================== */
+  --dialog-surface: #1a1a1a;
+  --dialog-border: rgba(255, 255, 255, 0.1);
+  --dialog-border-radius: 16px;
+  --dialog-border-radius-mobile: 20px;
+  --dialog-backdrop: rgba(0, 0, 0, 0.6);
+  --dialog-backdrop-blur: 4px;
+  --dialog-shadow-inner: rgba(255, 255, 255, 0.05);
+  --dialog-foreground: var(--foreground);
+  --dialog-foreground-muted: var(--foreground-muted);
+  --dialog-primary: var(--primary);
+
+  /* Dialog sizes */
+  --dialog-size-sm: 400px;
+  --dialog-size-md: 560px;
+  --dialog-size-lg: 800px;
+  --dialog-max-height: 90vh;
+  --dialog-max-height-mobile: 85vh;
+
+  /* Dialog padding */
+  --dialog-padding-sm: 20px;
+  --dialog-padding-md: 28px;
+  --dialog-padding-lg: 36px;
+
+  /* Dialog panels */
+  --dialog-panel-sm: 320px;
+  --dialog-panel-md: 440px;
+  --dialog-panel-lg: 640px;
+  --dialog-panel-height-sm: 30vh;
+  --dialog-panel-height-md: 50vh;
+  --dialog-panel-height-lg: 75vh;
+
+  /* Dialog animations */
+  --dialog-duration-in: 300ms;
+  --dialog-duration-out: 200ms;
+  --dialog-duration-desktop-in: 250ms;
+  --dialog-duration-desktop-out: 200ms;
+  --dialog-duration-backdrop-in: 300ms;
+  --dialog-duration-backdrop-out: 200ms;
+  --dialog-easing-in: cubic-bezier(0.16, 1, 0.3, 1);
+  --dialog-easing-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dialog-easing-backdrop: ease;
+
+  /* Dialog close button */
+  --dialog-close-bg: rgba(255, 255, 255, 0.05);
+  --dialog-close-bg-hover: rgba(255, 255, 255, 0.1);
+  --dialog-close-border: rgba(255, 255, 255, 0.08);
+
+  /* Dialog drag handle */
+  --dialog-drag-handle-width: 36px;
+  --dialog-drag-handle-height: 4px;
+  --dialog-drag-handle-bg: rgba(255, 255, 255, 0.2);
+
+  /* Dialog scrollbar */
+  --dialog-scrollbar-width: 6px;
+  --dialog-scrollbar-track: transparent;
+  --dialog-scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --dialog-scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+
+  /* ========================================
+     PRODUCT GRID
+     ======================================== */
+  --grid-gap: 24px;
+  --grid-gap-mobile: 16px;
+  --controls-gap: 12px;
+  --skeleton-bg: rgba(255, 255, 255, 0.05);
+  --skeleton-shimmer: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  --empty-icon-color: var(--foreground-muted);
+  --empty-text-color: var(--foreground-muted);
+
+  /* ========================================
+     CAROUSEL
+     ======================================== */
+  --carousel-duration: 300ms;
+
+  /* ========================================
+     PHONE INPUT
+     ======================================== */
+  --phone-input-border-color: var(--border);
+  --phone-input-primary-color: var(--primary);
+  --phone-input-success-color: var(--success);
+  --phone-input-error-color: var(--error);
+
+  /* ========================================
+     QUANTITY SELECTOR
+     ======================================== */
+  --quantity-selector-background: transparent;
+  --quantity-selector-border-color: var(--border);
+  --quantity-selector-border-radius: var(--radius-md);
+  --quantity-selector-button-size: 36px;
+  --quantity-selector-button-color: var(--foreground-muted);
+  --quantity-selector-button-hover-bg: var(--surface-hover);
+  --quantity-selector-button-disabled-opacity: 0.3;
+  --quantity-selector-text-color: var(--foreground);
+  --quantity-selector-font-size: var(--font-size-base);
+  --quantity-selector-font-weight: 600;
+  --quantity-selector-quantity-width: 48px;
+
+  /* ========================================
+     COMPARE TABLE
+     ======================================== */
+  --product-count: 2;
+}

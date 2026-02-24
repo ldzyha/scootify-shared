@@ -2,7 +2,7 @@
 
 import { CartItem } from '@scootify/shared/types/cart';
 import { ProductImage } from '../ProductImage';
-import { Price } from '../Price';
+import { Price, type PriceFormatter } from '../Price';
 import { QuantitySelector } from '../QuantitySelector';
 import { Icon } from '../Icon';
 import styles from './CartItemCard.module.css';
@@ -38,8 +38,8 @@ export interface CartItemCardProps {
   /** Whether this is a consultation product (no price) */
   isConsultation?: boolean;
   /** Optional custom formatters for Price component */
-  formatPrimary?: (cents: number) => { amount: number; formatted: string; currency: string; symbol: string };
-  formatSecondary?: (cents: number) => { amount: number; formatted: string; currency: string; symbol: string };
+  formatPrimary?: PriceFormatter;
+  formatSecondary?: PriceFormatter;
 }
 
 export function CartItemCard({

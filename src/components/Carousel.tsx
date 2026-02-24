@@ -16,6 +16,7 @@ import {
 import { useCarouselEngine } from './carousel-engine';
 import styles from './Carousel.module.css';
 import { Icon } from './Icon';
+import { MetallicText, type MetallicTextProps } from './MetallicText';
 import { Picture } from './Picture';
 
 // ============================================
@@ -31,6 +32,10 @@ export interface CarouselProps {
   title?: string;
   /** Section subtitle */
   subtitle?: string;
+  /** Title metallic variant. When set, title renders via MetallicText with gradient effect */
+  titleVariant?: MetallicTextProps['variant'];
+  /** Custom metallic gradients passed through to MetallicText (for brand palettes) */
+  metallicGradients?: MetallicTextProps['metallicGradients'];
   /** Visual transition effect */
   effect?: CarouselEffect;
   /** Enable infinite loop */
@@ -69,6 +74,8 @@ export interface CarouselProps {
   startIndex?: number;
   /** Duration of animations in ms (default 150) */
   duration?: number;
+  /** Custom thumbnail renderer. Receives (src, index) — useful when thumbnails need a different image component than Picture */
+  renderThumbnail?: (src: string, index: number) => ReactNode;
 }
 
 export interface CarouselSlideProps {
@@ -97,6 +104,8 @@ export function Carousel({
   children,
   title,
   subtitle,
+  titleVariant,
+  metallicGradients,
   effect = 'slide',
   loop = false,
   align = 'start',
@@ -116,6 +125,7 @@ export function Carousel({
   ariaLabel = 'Carousel',
   startIndex = 0,
   duration = 150,
+  renderThumbnail,
 }: CarouselProps) {
   // Count children
   const childArray = Children.toArray(children);
@@ -315,9 +325,15 @@ export function Carousel({
         <header className={styles.header}>
           <div className={styles.headerText}>
             {title && (
-              <h2 className={styles.title}>
-                {title}
-              </h2>
+              titleVariant ? (
+                <MetallicText variant={titleVariant} metallicGradients={metallicGradients} as="h2" className={styles.title}>
+                  {title}
+                </MetallicText>
+              ) : (
+                <h2 className={styles.title}>
+                  {title}
+                </h2>
+              )
             )}
             {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
           </div>
@@ -402,7 +418,10 @@ export function Carousel({
                   onClick={() => onThumbClick(index)}
                   aria-label={`View image ${index + 1}`}
                 >
-                  <Picture src={src} alt="" className={styles.thumbImage} sizes="80px" />
+                  {renderThumbnail
+                    ? renderThumbnail(src, index)
+                    : <Picture src={src} alt="" className={styles.thumbImage} sizes="80px" />
+                  }
                 </button>
               ))}
             </div>

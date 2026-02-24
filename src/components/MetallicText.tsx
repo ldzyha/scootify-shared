@@ -56,7 +56,7 @@ export interface MetallicTextProps {
    * Custom metallic gradient palette. 
    * If not provided, uses the default metallicBase palette.
    */
-  metallicGradients?: Record<string, string>;
+  metallicGradients?: Record<string, string | undefined>;
 }
 
 /**
@@ -77,8 +77,12 @@ export function MetallicText({
   style: customStyle,
   metallicGradients = metallicBase,
 }: MetallicTextProps) {
+  // Get gradient value, falling back to metallicBase for base variants
+  const gradientValue = metallicGradients[variant] || 
+    (variant in metallicBase ? metallicBase[variant as keyof typeof metallicBase] : undefined);
+  
   const style: CSSProperties = {
-    background: metallicGradients[variant],
+    background: gradientValue,
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',

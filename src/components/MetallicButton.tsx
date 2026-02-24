@@ -17,7 +17,7 @@ export interface MetallicButtonProps extends ButtonHTMLAttributes<HTMLButtonElem
    * Optional metallic gradients to use instead of defaults.
    * Allows sites to inject their brand-specific gradients.
    */
-  metallicGradients?: Record<MetallicVariant, string>;
+  metallicGradients?: Record<string, string | undefined>;
 }
 
 const sizeClasses = {
@@ -94,7 +94,7 @@ export function MetallicButton({
   const gradients = metallicGradients || defaultMetallicGradients;
   
   const style: CSSProperties = {
-    background: gradients[variant],
+    background: gradients[variant] || defaultMetallicGradients[variant],
     color: textColors[variant],
     ...customStyle,
   };

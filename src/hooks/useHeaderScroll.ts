@@ -9,7 +9,7 @@ export interface UseHeaderScrollReturn {
   /** Whether the page is at the top (scroll position near zero) */
   isAtTop: boolean;
   /** Ref to attach to the header element */
-  headerRef: RefObject<HTMLElement>;
+  headerRef: RefObject<HTMLElement | null>;
 }
 
 /**

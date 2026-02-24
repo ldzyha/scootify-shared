@@ -27,17 +27,24 @@ export function toComponentProduct(product: Product): OldProduct {
     description: product.description || undefined,
     categoryId: product.categoryIds[0] || '',
     categoryIds: product.categoryIds,
+    // Support both formats: cents (hysco/nami) and dollars (scootify)
     priceUsdCents: product.priceUsdCents,
     originalPriceUsdCents: product.originalPriceUsdCents || undefined,
+    priceUSD: product.priceUsdCents ? product.priceUsdCents / 100 : 0,
+    compareAtPriceUSD: product.originalPriceUsdCents ? product.originalPriceUsdCents / 100 : undefined,
     inStock: product.availability === 'in_stock',
     stockCount: product.stockQuantity || undefined,
     shippingDays: 14, // Default
     preorder: product.availability === 'pre_order',
+    discontinued: product.availability === 'discontinued',
+    hidden: product.availability === 'discontinued',
     purchaseModel: product.purchaseModel,
     prepaymentTerms: product.metadata?.prepaymentTerms,
     
     // Map new media format to old images format
-    images: product.media.images.map((url, index) => ({
+    // Support both formats: array of objects (hysco/nami) and array of strings (scootify)
+    images: product.media.images, // Simple array of URLs for scootify
+    imagesDetailed: product.media.images.map((url, index) => ({
       url,
       alt: `${product.name} - зображення ${index + 1}`,
       isMain: index === 0,
@@ -46,26 +53,78 @@ export function toComponentProduct(product: Product): OldProduct {
     videos: product.media.videos.length > 0 ? product.media.videos : undefined,
     youtubeVideoId: product.media.youtubeIds[0],
     
-    // Map variants
-    variants: isScooter 
-      ? scooter!.variants?.map(v => ({
-          id: v.id,
-          name: v.name,
-          sku: v.sku,
-          price: v.priceUsdCents,
-          originalPrice: v.originalPriceUsdCents || undefined,
-          inStock: v.inStock,
-          stockCount: v.stockQuantity || undefined,
-        }))
-      : (product as Accessory).variants?.map(v => ({
-          id: v.id,
-          name: v.name,
-          sku: v.sku,
-          price: v.priceUsdCents,
-          originalPrice: v.originalPriceUsdCents || undefined,
-          inStock: v.inStock,
-          stockCount: v.stockQuantity || undefined,
-        })),
+    // Map colors for scooters with color options
+    // Handle both string[] (old format) and Color[] (new format)
+    colors: isScooter && scooter?.colors 
+      ? scooter.colors.map(c => typeof c === 'string' ? c : c.id)
+      : undefined,
+    
+    // Map color hex values for outline/border display
+    colorHexMap: isScooter && scooter?.colors
+      ? scooter.colors.reduce((acc, c) => {
+          if (typeof c !== 'string' && c.hex) {
+            acc[c.id] = c.hex;
+          }
+          return acc;
+        }, {} as Record<string, string>)
+      : undefined,
+    
+    // Map variants - create default variant if none exist
+    // Support both cents and dollars formats
+    variants: (() => {
+      const mappedVariants = isScooter 
+        ? scooter!.variants?.map(v => ({
+            id: v.id,
+            name: v.name,
+            sku: v.sku,
+            price: v.priceUsdCents || 0, // hysco/nami expect cents as 'price'
+            originalPrice: v.originalPriceUsdCents || undefined,
+            priceUsdCents: v.priceUsdCents,
+            originalPriceUsdCents: v.originalPriceUsdCents || undefined,
+            priceUSD: v.priceUsdCents ? v.priceUsdCents / 100 : undefined,
+            compareAtPriceUSD: v.originalPriceUsdCents ? v.originalPriceUsdCents / 100 : undefined,
+            inStock: v.inStock,
+            stockCount: v.stockQuantity || undefined,
+            specsOverride: v.specsOverride ? toOldSpecsPartial(v.specsOverride) : undefined,
+            attributes: {
+              color: scooter!.colors?.find(c => c.variantId === v.id)?.id,
+            },
+          }))
+        : (product as Accessory).variants?.map(v => ({
+            id: v.id,
+            name: v.name,
+            sku: v.sku,
+            price: v.priceUsdCents || 0,
+            originalPrice: v.originalPriceUsdCents || undefined,
+            priceUsdCents: v.priceUsdCents,
+            originalPriceUsdCents: v.originalPriceUsdCents || undefined,
+            priceUSD: v.priceUsdCents ? v.priceUsdCents / 100 : undefined,
+            compareAtPriceUSD: v.originalPriceUsdCents ? v.originalPriceUsdCents / 100 : undefined,
+            inStock: v.inStock,
+            stockCount: v.stockQuantity || undefined,
+            attributes: {},
+          }));
+      
+      // If no variants, create a default variant with product-level pricing
+      if (!mappedVariants || mappedVariants.length === 0) {
+        return [{
+          id: product.id,
+          name: 'Default',
+          sku: product.sku,
+          price: product.priceUsdCents || 0,
+          originalPrice: product.originalPriceUsdCents || undefined,
+          priceUsdCents: product.priceUsdCents,
+          originalPriceUsdCents: product.originalPriceUsdCents || undefined,
+          priceUSD: product.priceUsdCents ? product.priceUsdCents / 100 : 0,
+          compareAtPriceUSD: product.originalPriceUsdCents ? product.originalPriceUsdCents / 100 : undefined,
+          inStock: product.availability === 'in_stock',
+          stockCount: product.stockQuantity || undefined,
+          attributes: {}, // Empty attributes for scootify compatibility
+        }];
+      }
+      
+      return mappedVariants;
+    })(),
     
     // Map specs for scooters
     specs: isScooter ? toOldSpecs(scooter!) : undefined,
@@ -88,6 +147,53 @@ export function toComponentProduct(product: Product): OldProduct {
         }
       : undefined,
   };
+}
+
+/**
+ * Convert partial ScooterSpecs override to old ProductSpecs format
+ * Used for variant-level spec overrides (e.g., different battery capacity)
+ */
+function toOldSpecsPartial(override: Partial<import('./schema').ScooterSpecs>): Partial<OldProductSpecs> {
+  const result: Partial<OldProductSpecs> = {};
+
+  if (override.battery) {
+    result.battery = {
+      voltage: override.battery.voltage || undefined,
+      capacity: override.battery.capacityAh || undefined,
+      wattHours: override.battery.wattHours || undefined,
+      cells: override.battery.cells || undefined,
+      chargeTime: override.battery.chargeTimeMin && override.battery.chargeTimeMax
+        ? { min: override.battery.chargeTimeMin, max: override.battery.chargeTimeMax }
+        : undefined,
+      chargerSpec: override.battery.chargerSpec || undefined,
+    };
+  }
+
+  if (override.performance) {
+    result.performance = {
+      maxSpeed: override.performance.maxSpeed || undefined,
+      range: override.performance.range || undefined,
+      maxIncline: override.performance.maxIncline || undefined,
+      maxLoad: override.performance.maxLoad || undefined,
+    };
+  }
+
+  if (override.safety) {
+    result.safety = {
+      waterRating: override.safety.ipRating as any || undefined,
+    };
+  }
+
+  if (override.motor) {
+    result.motor = {
+      count: override.motor.count || undefined,
+      powerPerMotor: override.motor.powerPerMotor || undefined,
+      totalPower: override.motor.totalPower || undefined,
+      type: override.motor.type as any || undefined,
+    };
+  }
+
+  return result;
 }
 
 /**

@@ -38,7 +38,7 @@ export interface MetallicCardProps {
   /** Custom inline styles (merged with variant styles) */
   style?: CSSProperties;
   /** Optional custom metallic gradients object */
-  metallicGradients?: Record<string, string>;
+  metallicGradients?: Record<string, string | undefined>;
 }
 
 /**
@@ -84,9 +84,12 @@ export function MetallicCard({
   // Use custom gradients if provided, otherwise use default metallicSubtle
   const gradients = metallicGradients || metallicSubtle;
   
+  // Get the gradient value with fallback
+  const gradientValue = variant ? (gradients[variant] || metallicSubtle[variant as keyof typeof metallicSubtle]) : undefined;
+  
   // Build card style with variant background and border
   const cardStyle: CSSProperties = {
-    ...(variant && { background: gradients[variant] }),
+    ...(gradientValue && { background: gradientValue }),
     ...(variant && { border: `1px solid ${variantBorders[variant] || 'rgba(255,255,255,0.05)'}` }),
     ...style,
   };

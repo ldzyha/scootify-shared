@@ -176,7 +176,7 @@ const CompareTable: React.FC<CompareTableProps> = ({
             <td className={styles.specLabel}>Price</td>
             {displayProducts.map(product => {
               // Assume price is in USD cents, convert to UAH
-              const uahCents = Math.round(product.price * 42.25); // Fallback rate
+              const uahCents = Math.round(product.price * 43.5); // Fallback rate
               return (
                 <td key={product.id}>
                   <Price 
@@ -296,7 +296,7 @@ const CompareTable: React.FC<CompareTableProps> = ({
                 <div>
                   <h3 className={styles.accordionProductName}>{product.name}</h3>
                   <Price 
-                    primaryCents={Math.round(product.price * 42.25)}
+                    primaryCents={Math.round(product.price * 43.5)}
                     secondaryCents={product.price}
                   />
                 </div>

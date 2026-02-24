@@ -1,0 +1,72 @@
+/* ============================================================
+   HILEY Theme — Premium Metallic Blue + Gold
+   Ukrainian flag colors, luxury metallic feel
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --primary: #0057B7;
+  --primary-dark: #004494;
+  --primary-light: #3d8fd9;
+  --primary-hover: #004494;
+  --primary-alpha-10: rgba(0, 87, 183, 0.1);
+
+  --secondary: #FFD700;
+  --secondary-dark: #b8860b;
+  --secondary-light: #fff4b3;
+  --accent: #FFD700;
+
+  /* Surfaces */
+  --background: #121212;
+  --background-surface: #1a1a1a;
+  --background-elevated: #1a1a1a;
+  --background-elevated-hover: #222222;
+
+  --foreground: #ffffff;
+  --foreground-muted: #a0a0a0;
+
+  --surface: #1E1E1E;
+  --surface-hover: #2a2a2a;
+
+  /* Semantic Colors — aliased */
+  --color-primary-rgb: 0, 87, 183;
+  --color-error-rgb: 239, 68, 68;
+
+  /* Metallic Palette (Hiley-specific, used by site CSS) */
+  --silver-dark: #8a8a8a;
+  --silver: #c0c0c0;
+  --silver-light: #e8e8e8;
+  --platinum-dark: #4a4a4a;
+  --platinum: #7a7a7a;
+  --platinum-light: #a8a8a8;
+  --blue-metal-dark: #1a3a5c;
+  --blue-metal: #4a7eb8;
+  --blue-metal-light: #8bb8e8;
+  --gold-metal-dark: #8b7355;
+  --gold-metal: #d4af37;
+  --gold-metal-light: #f5e6a3;
+
+  /* Metallic Gradients */
+  --gradient-silver: linear-gradient(135deg, #8a8a8a 0%, #c0c0c0 50%, #e8e8e8 100%);
+  --gradient-platinum: linear-gradient(135deg, #4a4a4a 0%, #7a7a7a 50%, #a8a8a8 100%);
+  --gradient-blue-metal: linear-gradient(135deg, #1a3a5c 0%, #4a7eb8 50%, #8bb8e8 100%);
+  --gradient-gold-metal: linear-gradient(135deg, #8b7355 0%, #d4af37 50%, #f5e6a3 100%);
+
+  /* Brand Gradients */
+  --gradient-brand: linear-gradient(90deg, #0057B7 0%, #FFD700 100%);
+  --gradient-primary: linear-gradient(135deg, #004494 0%, #0057B7 50%, #3d8fd9 100%);
+  --gradient-hero: linear-gradient(180deg, #121212 0%, #1E1E1E 100%);
+
+  /* Effects */
+  --glow-primary: rgba(0, 87, 183, 0.4);
+  --glow-secondary: rgba(255, 215, 0, 0.4);
+  --glow-brand: rgba(0, 87, 183, 0.3);
+
+  /* Component Overrides */
+  --tile-glow-hover: rgba(0, 87, 183, 0.3);
+  --tile-border-hover: rgba(0, 87, 183, 0.3);
+  --variant-pill-border-active: #0057B7;
+  --swatch-border-active: #0057B7;
+  --swatch-shadow-active: rgba(0, 87, 183, 0.4);
+  --dialog-primary: #0057B7;
+}
