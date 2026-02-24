@@ -22,8 +22,8 @@ export const DELIVERY = {
 
 /** Payment methods */
 export const PAYMENT_METHODS = {
-  parts: ['bank_transfer', 'card', 'cash_on_delivery'] as const,
-  scooters: ['bank_transfer', 'card', 'partial_prepayment'] as const,
+  parts: ['card_online', 'bank_transfer', 'cash_on_delivery'] as const,
+  scooters: ['card_online', 'bank_transfer', 'partial_prepayment'] as const,
 };
 
 /** Prepayment terms by brand */
