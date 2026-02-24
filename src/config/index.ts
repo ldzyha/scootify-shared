@@ -1,1 +1,7 @@
-export { hileyConfig, scootifyConfig, namiConfig, hyscoConfig } from './sites';
+export {
+  hileyConfig,
+  scootifyConfig,
+  namiConfig,
+  hyscoConfig,
+  scooConfig,
+} from "./sites";

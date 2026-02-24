@@ -45,7 +45,7 @@ export interface MetallicGradients {
 }
 
 /** Theme IDs matching shared/src/styles/themes/*.css */
-export type ThemeId = 'hiley' | 'hysco' | 'nami' | 'scootify';
+export type ThemeId = "hiley" | "hysco" | "nami" | "scootify" | "scoo";
 
 export interface SiteConfig {
   // Brand identity
@@ -55,35 +55,35 @@ export interface SiteConfig {
   brand: string;
   tagline?: string;
   description: string;
-  
+
   // Contact
   contact: ContactConfig;
   address?: AddressConfig;
   geo?: GeoConfig;
-  
+
   // Business
   legalName?: string;
   taxId?: string;
-  
+
   // Design
   colors?: BrandColors;
   metallicGradients?: MetallicGradients;
   logoUrl?: string;
   logoWidth?: number;
   logoHeight?: number;
-  
+
   // Theme — identifies which CSS theme file to use
   theme: {
     id: ThemeId;
   };
-  
+
   // Currency
-  defaultCurrency: 'UAH' | 'USD';
+  defaultCurrency: "UAH" | "USD";
   fallbackExchangeRate: number; // UAH per 1 USD
-  
+
   // URLs
   productUrlPattern: string; // e.g., '/product/:slug' or '/tovary/:slug/'
-  
+
   // Features
   features?: {
     cart?: boolean;
@@ -93,10 +93,10 @@ export interface SiteConfig {
     /** Enables consultation CTA (connect with distributor) */
     consultation?: boolean;
   };
-  
+
   // Order prefix (e.g., 'HL-', 'NM-', 'HY-', 'SF-')
   orderPrefix: string;
-  
+
   // Firestore city ref for delivery
   storeCity?: {
     ref: string;

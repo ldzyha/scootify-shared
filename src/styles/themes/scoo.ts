@@ -1,0 +1,1 @@
+import "./scoo.css";
