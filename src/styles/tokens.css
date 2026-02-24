@@ -66,6 +66,9 @@
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;       /* pill shape */
 
   /* Alias: --border-radius-* for components that use this pattern */
   --border-radius-md: var(--radius-md);
@@ -79,6 +82,7 @@
   --font-mono: 'SF Mono', 'Fira Code', monospace;
 
   /* Font sizes (canonical scale) */
+  --font-size-2xs: 0.6875rem;  /* 11px — micro labels, badges */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -86,6 +90,8 @@
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2rem;       /* 32px — product headings */
+  --font-size-5xl: 2.5rem;     /* 40px — hero headings */
 
   /* ========================================
      7. SPACING (--space-* scale)
@@ -191,6 +197,7 @@
   --bg-accent-hover: rgba(255, 255, 255, 0.1);
 
   /* --text-* pattern for font sizes (used by cart) */
+  --text-2xs: var(--font-size-2xs);
   --text-xs: var(--font-size-xs);
   --text-sm: var(--font-size-sm);
   --text-base: var(--font-size-base);
@@ -198,6 +205,8 @@
   --text-xl: var(--font-size-xl);
   --text-2xl: var(--font-size-2xl);
   --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
 
   /* --text-* pattern for semantic text colors (used by cart, tile) */
   --text-primary: var(--foreground);

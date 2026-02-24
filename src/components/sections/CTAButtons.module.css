@@ -1,0 +1,55 @@
+/* CTAButtons — row of CTA action links with metallic gradients */
+
+.container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-full, 9999px);
+  font-weight: 600;
+  font-size: var(--font-size-base, 1rem);
+  padding: 16px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* States (respects prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.15s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .button:active {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:hover {
+    filter: brightness(1.1);
+  }
+
+  .button:active {
+    filter: brightness(0.95);
+  }
+}
+
+/* Focus */
+.button:focus-visible {
+  outline: 2px solid var(--primary-light, #818cf8);
+  outline-offset: 2px;
+}

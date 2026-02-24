@@ -29,6 +29,9 @@ export { MetallicButton, type MetallicButtonProps } from './MetallicButton';
 // MetallicCard - Card container with metallic styling
 export { MetallicCard, type MetallicCardProps } from './MetallicCard';
 
+// MetallicLink - Link/anchor with metallic gradient effects (mirrors MetallicButton)
+export { MetallicLink, type MetallicLinkProps } from './MetallicLink';
+
 // MetallicText - Text with metallic gradient effects
 export { MetallicText, type MetallicTextProps } from './MetallicText';
 
