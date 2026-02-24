@@ -51,10 +51,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Контролер 72V 50A FOC 2-в-1 Wolf King GTR | Купити в Scootify",
+      "titleUk": "Контролер 72V 50A FOC 2-в-1 Wolf King GTR | Купити в Scootify",
+      "description": "Оригінальний контролер FOC 2-в-1 72V 50A для Kaabo Wolf King GTR. Безщітковий синусоїдальний. Замовляйте з доставкою по Україні!",
+      "descriptionUk": "Оригінальний контролер FOC 2-в-1 72V 50A для Kaabo Wolf King GTR. Безщітковий синусоїдальний. Замовляйте з доставкою по Україні!",
       "keywords": [
         "Kaabo",
         "Wolf King GTR",
@@ -67,8 +67,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/controller-72v-foc/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "3 months",
+    "warrantyUk": "3 місяці",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -159,10 +159,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Флісова маска-шарф для електросамоката | Купити в Scootify",
+      "titleUk": "Флісова маска-шарф для електросамоката | Купити в Scootify",
+      "description": "Флісова маска-шарф для захисту від вітру та холоду під час їзди на електросамокаті. Універсальний розмір. Замовляйте в Scootify!",
+      "descriptionUk": "Флісова маска-шарф для захисту від вітру та холоду під час їзди на електросамокаті. Універсальний розмір. Замовляйте в Scootify!",
       "keywords": [
         "Kaabo",
         "аксесуари для електросамокатів",
@@ -252,10 +252,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Вітрозахисні рукавички ROCKBROS | Купити в Scootify",
+      "titleUk": "Вітрозахисні рукавички ROCKBROS | Купити в Scootify",
+      "description": "Вітрозахисні рукавички ROCKBROS для електросамоката. Сенсорний екран, теплий фліс, захист від вітру. Замовляйте в Scootify!",
+      "descriptionUk": "Вітрозахисні рукавички ROCKBROS для електросамоката. Сенсорний екран, теплий фліс, захист від вітру. Замовляйте в Scootify!",
       "keywords": [
         "аксесуари для самоката",
         "вітрозахисні рукавички",
@@ -278,8 +278,8 @@ export const accessories: Accessory[] = [
     "variants": [
       {
         "id": "1eb5d3c2-4c00-422a-946a-d9d78430e870",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Вітрозахисні рукавички ROCKBROS",
+        "nameUk": "Вітрозахисні рукавички ROCKBROS",
         "sku": "ROCKBROS_GLOVES_WINTER",
         "priceUsdCents": 1894,
         "originalPriceUsdCents": null,
@@ -349,10 +349,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "TFT дисплей для Kaabo Wolf King GTR | Купити в Scootify",
+      "titleUk": "TFT дисплей для Kaabo Wolf King GTR | Купити в Scootify",
+      "description": "Кольоровий TFT дисплей 3.5\" для Kaabo Wolf King GTR. Швидкість, заряд, режими їзди на одному екрані. Замовляйте в Scootify!",
+      "descriptionUk": "Кольоровий TFT дисплей 3.5\" для Kaabo Wolf King GTR. Швидкість, заряд, режими їзди на одному екрані. Замовляйте в Scootify!",
       "keywords": [
         "Kaabo",
         "Wolf King GTR",
@@ -365,8 +365,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/tft-display/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "3 months",
+    "warrantyUk": "3 місяці",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -451,10 +451,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Ручка газу (дросель) для самокатів KAABO | Купити в Scootify",
+      "titleUk": "Ручка газу (дросель) для самокатів KAABO | Купити в Scootify",
+      "description": "Оригінальна ручка газу KAABO для Wolf King GTR, Mantis, Wolf Warrior. Плавне керування швидкістю. Замовляйте в Scootify!",
+      "descriptionUk": "Оригінальна ручка газу KAABO для Wolf King GTR, Mantis, Wolf Warrior. Плавне керування швидкістю. Замовляйте в Scootify!",
       "keywords": [
         "KAABO",
         "акселератор",
@@ -465,8 +465,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/throttle-kaabo/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "3 months",
+    "warrantyUk": "3 місяці",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -480,8 +480,8 @@ export const accessories: Accessory[] = [
     "variants": [
       {
         "id": "057e8044-4445-47d6-ad97-e3c16dc818ae",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Ручка газу KAABO",
+        "nameUk": "Ручка газу KAABO",
         "sku": "KAABO_WOLF_KING_GTR_THROTTLE",
         "priceUsdCents": 5060,
         "originalPriceUsdCents": null,
@@ -546,10 +546,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Порт зарядки 72V для Kaabo Wolf King GTR | Купити в Scootify",
+      "titleUk": "Порт зарядки 72V для Kaabo Wolf King GTR | Купити в Scootify",
+      "description": "Оригінальний порт зарядки 72V для електросамоката Kaabo Wolf King GTR. Надійне з'єднання та швидка зарядка. Замовляйте в Scootify!",
+      "descriptionUk": "Оригінальний порт зарядки 72V для електросамоката Kaabo Wolf King GTR. Надійне з'єднання та швидка зарядка. Замовляйте в Scootify!",
       "keywords": [
         "KAABO",
         "Wolf King GTR",
@@ -561,8 +561,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/charging-port-72v/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "3 months",
+    "warrantyUk": "3 місяці",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -577,8 +577,8 @@ export const accessories: Accessory[] = [
     "variants": [
       {
         "id": "b8d93b5f-07e9-408a-ac08-9500adc30169",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Порт зарядки 72V GTR",
+        "nameUk": "Порт зарядки 72V GTR",
         "sku": "KAABO_WOLF_KING_GTR_SOCKET_OPTIMIZED",
         "priceUsdCents": 6208,
         "originalPriceUsdCents": null,
@@ -600,7 +600,7 @@ export const accessories: Accessory[] = [
     "id": "wrench-suspension-gtr",
     "slug": "klyuch-rehulyuvannya-amortyzatora-kaabo-wolf-king-gtr",
     "sku": "KAABO_WOLF_KING_GTR_WRENCH",
-    "brandId": "unknown",
+    "brandId": "kaabo",
     "productType": "accessory",
     "name": "Ключ регулювання амортизатора KAABO Wolf King GTR",
     "nameUk": "Ключ регулювання амортизатора KAABO Wolf King GTR",
@@ -644,10 +644,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Ключ регулювання амортизатора Wolf King GTR | Купити в Scootify",
+      "titleUk": "Ключ регулювання амортизатора Wolf King GTR | Купити в Scootify",
+      "description": "Оригінальний ключ для регулювання амортизаторів Kaabo Wolf King GTR. Точне налаштування підвіски. Замовляйте в Scootify!",
+      "descriptionUk": "Оригінальний ключ для регулювання амортизаторів Kaabo Wolf King GTR. Точне налаштування підвіски. Замовляйте в Scootify!",
       "keywords": [
         "KAABO",
         "Wolf King GTR",
@@ -659,8 +659,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/wrench-gtr/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "1 month",
+    "warrantyUk": "1 місяць",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -670,14 +670,13 @@ export const accessories: Accessory[] = [
     "weight": 0.3,
     "compatibility": [
       "kaabo-wolf-king-gtr",
-      "kaabo",
       "kaabo"
     ],
     "variants": [
       {
         "id": "cc0a6c7b-a09b-4d84-a2d7-f7ffd843c63c",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Ключ амортизатора GTR",
+        "nameUk": "Ключ амортизатора GTR",
         "sku": "KAABO_WOLF_KING_GTR_WRENCH",
         "priceUsdCents": 3922,
         "originalPriceUsdCents": null,
@@ -742,10 +741,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Замок батареї для Kaabo Wolf King GTR | Купити в Scootify",
+      "titleUk": "Замок батареї для Kaabo Wolf King GTR | Купити в Scootify",
+      "description": "Замок батареї з кодовим блокуванням для Kaabo Wolf King GTR. Захистіть батарею від крадіжки. Замовляйте в Scootify!",
+      "descriptionUk": "Замок батареї з кодовим блокуванням для Kaabo Wolf King GTR. Захистіть батарею від крадіжки. Замовляйте в Scootify!",
       "keywords": [
         "KAABO",
         "Wolf King GTR",
@@ -756,8 +755,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/battery-lock/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "1 month",
+    "warrantyUk": "1 місяць",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -772,8 +771,8 @@ export const accessories: Accessory[] = [
     "variants": [
       {
         "id": "7ab191aa-7f8f-4ab4-acd0-53a76d982bfd",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Замок батареї GTR",
+        "nameUk": "Замок батареї GTR",
         "sku": "KAABO_WOLF_KING_GTR_BATTERY_LOCK",
         "priceUsdCents": 1449,
         "originalPriceUsdCents": null,
@@ -840,10 +839,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Гальмівні колодки для електросамоката | Купити в Scootify",
+      "titleUk": "Гальмівні колодки для електросамоката | Купити в Scootify",
+      "description": "Гальмівні колодки Shimano для електросамоката — resin, metallic, semi-metallic. Надійне гальмування на будь-якій швидкості. Замовляйте!",
+      "descriptionUk": "Гальмівні колодки Shimano для електросамоката — resin, metallic, semi-metallic. Надійне гальмування на будь-якій швидкості. Замовляйте!",
       "keywords": [
         "BUCKLOS",
         "Shimano",
@@ -856,8 +855,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/brake-pads-bucklos/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "3 months",
+    "warrantyUk": "3 місяці",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -865,7 +864,12 @@ export const accessories: Accessory[] = [
     "updatedAt": new Date("2026-02-21T10:06:04.868Z"),
     "metadata": {},
     "weight": 0.05,
-    "compatibility": [],
+    "compatibility": [
+      "kaabo-wolf-king-gtr",
+      "kaabo-wolf-warrior",
+      "kaabo-mantis",
+      "shimano"
+    ],
     "variants": [
       {
         "id": "cf895e73-5380-40f5-b1fb-b0be840a2cd4",
@@ -983,10 +987,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Багаторазові стяжки для електросамоката 10 шт | Купити в Scootify",
+      "titleUk": "Багаторазові стяжки для електросамоката 10 шт | Купити в Scootify",
+      "description": "Набір 10 багаторазових нейлонових стяжок для організації кабелів на електросамокаті. Розмір 20x2 см. Замовляйте в Scootify!",
+      "descriptionUk": "Набір 10 багаторазових нейлонових стяжок для організації кабелів на електросамокаті. Розмір 20x2 см. Замовляйте в Scootify!",
       "keywords": [
         "аксесуари для електросамоката",
         "кріплення кабелів",
@@ -1009,8 +1013,8 @@ export const accessories: Accessory[] = [
     "variants": [
       {
         "id": "a88c2734-9b59-4006-b056-5733e352b580",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Набір 10 шт. / 20x2 см",
+        "nameUk": "Набір 10 шт. / 20x2 см",
         "sku": "ACCESSORIES_STRAP_HOOK_LOOP_20_2",
         "priceUsdCents": 436,
         "originalPriceUsdCents": null,
@@ -1076,10 +1080,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Замок для електросамоката | Купити в Scootify",
+      "titleUk": "Замок для електросамоката | Купити в Scootify",
+      "description": "Надійний замок для електросамоката — ланцюговий та тросовий варіанти. Загартована сталь, захист від крадіжки. Замовляйте в Scootify!",
+      "descriptionUk": "Надійний замок для електросамоката — ланцюговий та тросовий варіанти. Загартована сталь, захист від крадіжки. Замовляйте в Scootify!",
       "keywords": [
         "аксесуари для самоката",
         "безпека самоката",
@@ -1089,8 +1093,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/chain-lock-60cm/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "1 month",
+    "warrantyUk": "1 місяць",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -1204,10 +1208,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Фіксатор складання для KAABO Wolf | Купити в Scootify",
+      "titleUk": "Фіксатор складання для KAABO Wolf | Купити в Scootify",
+      "description": "Оригінальний фіксатор складання з ланцюжком для електросамокатів KAABO Wolf. Надійна фіксація рами. Замовляйте в Scootify!",
+      "descriptionUk": "Оригінальний фіксатор складання з ланцюжком для електросамокатів KAABO Wolf. Надійна фіксація рами. Замовляйте в Scootify!",
       "keywords": [
         "KAABO",
         "KAABO Wolf",
@@ -1218,8 +1222,8 @@ export const accessories: Accessory[] = [
       ],
       "ogImage": "/images/products/accessories/folding-lock-pin/main.webp"
     },
-    "warranty": null,
-    "warrantyUk": null,
+    "warranty": "1 month",
+    "warrantyUk": "1 місяць",
     "rating": null,
     "reviewCount": 0,
     "active": true,
@@ -1228,14 +1232,15 @@ export const accessories: Accessory[] = [
     "metadata": {},
     "weight": 0.2,
     "compatibility": [
-      "kaabo",
+      "kaabo-wolf-king-gtr",
+      "kaabo-wolf-warrior",
       "kaabo"
     ],
     "variants": [
       {
         "id": "490935af-1976-4f1b-9438-f92312f0ba23",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Фіксатор складання Wolf",
+        "nameUk": "Фіксатор складання Wolf",
         "sku": "KAABO_WOLF_KING_GTR_FOLDING_LOCK_PIN",
         "priceUsdCents": 2255,
         "originalPriceUsdCents": null,
@@ -1297,10 +1302,10 @@ export const accessories: Accessory[] = [
       "youtubeIds": []
     },
     "seo": {
-      "title": null,
-      "titleUk": null,
-      "description": null,
-      "descriptionUk": null,
+      "title": "Чохол для електросамоката Toptrek 210D | Купити в Scootify",
+      "titleUk": "Чохол для електросамоката Toptrek 210D | Купити в Scootify",
+      "description": "Водонепроникний чохол Toptrek Oxford 210D для електросамоката. Захист від дощу, снігу та пилу. Замовляйте в Scootify!",
+      "descriptionUk": "Водонепроникний чохол Toptrek Oxford 210D для електросамоката. Захист від дощу, снігу та пилу. Замовляйте в Scootify!",
       "keywords": [
         "аксесуари для самоката",
         "електросамокат",
@@ -1323,8 +1328,8 @@ export const accessories: Accessory[] = [
     "variants": [
       {
         "id": "5c57da4f-6f26-408c-a47f-a236433649a5",
-        "name": "Default Title",
-        "nameUk": "Default Title",
+        "name": "Чохол Toptrek 210D",
+        "nameUk": "Чохол Toptrek 210D",
         "sku": "TOPTREK_COVER_210D",
         "priceUsdCents": 2759,
         "originalPriceUsdCents": null,
