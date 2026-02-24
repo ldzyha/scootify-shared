@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Icon } from './Icon';
 import type { ReactNode } from 'react';
 import type { SiteConfig } from '../types/site-config';
+import styles from './ProductTerms.module.css';
 
 export interface ProductTermsProps {
   siteConfig: SiteConfig;
@@ -21,12 +22,93 @@ export interface TermSection {
 }
 
 /**
+ * Simple inline markdown: **bold**, - bullets, numbered lists, newlines.
+ * No external dependencies needed.
+ */
+function renderSimpleMarkdown(text: string): ReactNode[] {
+  const lines = text.split('\n');
+  const elements: ReactNode[] = [];
+  let key = 0;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      elements.push(<div key={key++} className={styles.spacer} />);
+      continue;
+    }
+
+    // Parse inline **bold** spans
+    const inlineParsed = parseInlineBold(trimmed);
+
+    // Bullet list item
+    if (trimmed.startsWith('- ')) {
+      const content = parseInlineBold(trimmed.slice(2));
+      elements.push(
+        <div key={key++} className={styles.listItem}>
+          <span className={styles.bullet} aria-hidden="true" />
+          <span>{content}</span>
+        </div>
+      );
+      continue;
+    }
+
+    // Numbered list item (e.g. "1. Text")
+    const numberedMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+    if (numberedMatch) {
+      const content = parseInlineBold(numberedMatch[2]);
+      elements.push(
+        <div key={key++} className={styles.listItem}>
+          <span className={styles.number}>{numberedMatch[1]}.</span>
+          <span>{content}</span>
+        </div>
+      );
+      continue;
+    }
+
+    // Heading-like bold line (entire line is bold)
+    if (trimmed.startsWith('**') && trimmed.endsWith('**') && !trimmed.slice(2, -2).includes('**')) {
+      elements.push(
+        <p key={key++} className={styles.contentHeading}>
+          {trimmed.slice(2, -2)}
+        </p>
+      );
+      continue;
+    }
+
+    // Regular paragraph
+    elements.push(<p key={key++} className={styles.contentParagraph}>{inlineParsed}</p>);
+  }
+
+  return elements;
+}
+
+/**
+ * Parse **bold** segments within a string into <strong> elements.
+ */
+function parseInlineBold(text: string): ReactNode[] {
+  const parts: ReactNode[] = [];
+  const regex = /\*\*(.+?)\*\*/g;
+  let lastIndex = 0;
+  let match;
+  let key = 0;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    parts.push(<strong key={key++}>{match[1]}</strong>);
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : [text];
+}
+
+/**
  * ProductTerms - Accordion component with delivery, payment, warranty, and return information
- * 
- * @example
- * ```tsx
- * <ProductTerms siteConfig={siteConfig} />
- * ```
  */
 export function ProductTerms({ siteConfig, purchaseModel = 'consultation', customSections, className = '' }: ProductTermsProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -35,7 +117,7 @@ export function ProductTerms({ siteConfig, purchaseModel = 'consultation', custo
   const consultationSections: TermSection[] = [
     {
       id: 'about',
-      title: '⚠️ Важлива інформація',
+      title: 'Важлива інформація',
       content: `
 **Ми не є офіційним дистриб'ютором**
 
@@ -199,35 +281,33 @@ export function ProductTerms({ siteConfig, purchaseModel = 'consultation', custo
   };
 
   return (
-    <div className={`space-y-2 ${className}`}>
-      <h3 className="text-xl font-bold mb-4">Умови покупки</h3>
-      
+    <div className={`${styles.container} ${className}`}>
       {sections.map((section) => {
         const isOpen = openSection === section.id;
-        
+
         return (
           <div
             key={section.id}
-            className="border border-border rounded-lg overflow-hidden bg-surface"
+            className={`${styles.section} ${isOpen ? styles.sectionOpen : ''}`}
           >
             <button
               onClick={() => toggleSection(section.id)}
-              className="w-full px-4 py-3 flex items-center justify-between hover:bg-surface-hover transition-colors text-left"
+              className={styles.sectionButton}
               aria-expanded={isOpen}
             >
-              <span className="font-semibold">{section.title}</span>
+              <span className={styles.sectionTitle}>{section.title}</span>
               <Icon
                 name={isOpen ? 'chevronUp' : 'chevronDown'}
                 size="sm"
-                className="text-foreground-muted transition-transform"
+                className={styles.chevron}
               />
             </button>
-            
+
             {isOpen && (
-              <div className="px-4 py-3 border-t border-border">
-                <div className="prose prose-sm max-w-none text-foreground-muted whitespace-pre-line">
-                  {section.content}
-                </div>
+              <div className={styles.sectionContent}>
+                {typeof section.content === 'string'
+                  ? renderSimpleMarkdown(section.content)
+                  : section.content}
               </div>
             )}
           </div>

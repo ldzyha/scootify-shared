@@ -105,6 +105,7 @@ export function MetallicButton({
         ${sizeClasses[size]}
         rounded-full
         font-bold
+        cursor-pointer
         transition-all
         hover:scale-105
         hover:shadow-xl
@@ -112,11 +113,9 @@ export function MetallicButton({
         disabled:opacity-50
         disabled:cursor-not-allowed
         disabled:hover:scale-100
-        focus-visible:outline-none
-        focus-visible:ring-2
-        focus-visible:ring-offset-2
-        focus-visible:ring-offset-[#121212]
-        focus-visible:ring-blue-400
+        focus-visible:outline-2
+        focus-visible:outline-offset-2
+        focus-visible:outline-primary-light
         ${className}
       `}
       style={style}
