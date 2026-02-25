@@ -16,13 +16,17 @@ export interface ProductSpecs {
     maxSpeed?: number;
     maxSpeedLimited?: number;
     range?: number;
+    acceleration025?: number;
+    brakingDistance?: number;
     maxIncline?: number;
     maxLoad?: number;
   };
   motor?: {
     count?: number;
     powerPerMotor?: number;
+    peakPower?: number;
     totalPower?: number;
+    controller?: string;
     type?: 'hub' | 'belt' | 'chain';
   };
   battery?: {
@@ -40,6 +44,7 @@ export interface ProductSpecs {
     weight?: number;
     wheelSize?: number;
     wheelType?: 'pneumatic' | 'solid' | 'tubeless';
+    tireSpec?: string;
     foldable?: boolean;
     dimensions?: { length: number; width: number; height: number };
     foldedDimensions?: { length: number; width: number; height: number };
@@ -48,9 +53,12 @@ export interface ProductSpecs {
     waterRating?: 'IPX4' | 'IPX5' | 'IPX6' | 'IPX7';
     brakeType?: string;
     brakePistons?: number;
-    suspensionFront?: 'none' | 'spring' | 'hydraulic';
+    suspensionFront?: 'none' | 'spring' | 'hydraulic' | 'inverted fork';
     suspensionRear?: 'none' | 'spring' | 'hydraulic';
     suspensionAdjustable?: boolean;
+    frameType?: string;
+    steeringColumn?: string;
+    dashboardProtection?: string;
   };
   features?: {
     display?: boolean;
