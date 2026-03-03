@@ -4,7 +4,7 @@
  */
 
 export interface ContactConfig {
-  phone: string;
+  phone?: string;
   email: string;
   telegram?: {
     bot?: string;

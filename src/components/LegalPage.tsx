@@ -69,7 +69,7 @@ function replacePlaceholders(text: string, siteConfig: SiteConfig): string {
     '{{siteName}}': siteConfig.siteName,
     '{{siteUrl}}': siteConfig.siteUrl,
     '{{brand}}': siteConfig.brand,
-    '{{phone}}': siteConfig.contact.phone,
+    '{{phone}}': siteConfig.contact.phone || '',
     '{{email}}': siteConfig.contact.email,
     '{{telegram}}': siteConfig.contact.telegram?.personal || '',
     '{{address}}': siteConfig.address 
@@ -82,7 +82,7 @@ function replacePlaceholders(text: string, siteConfig: SiteConfig): string {
     '{SITE_NAME}': siteConfig.siteName,
     '{SITE_URL}': siteConfig.siteUrl,
     '{BRAND}': siteConfig.brand,
-    '{PHONE}': siteConfig.contact.phone,
+    '{PHONE}': siteConfig.contact.phone || '',
     '{EMAIL}': siteConfig.contact.email,
     '{TELEGRAM}': siteConfig.contact.telegram?.personal || '',
     '{ADDRESS}': siteConfig.address 

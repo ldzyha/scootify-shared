@@ -154,7 +154,7 @@ export function generateOrganizationSchema(config: SiteConfig) {
     name: config.siteName,
     url: config.siteUrl,
     description: config.description,
-    telephone: config.contact.phone,
+    ...(config.contact.phone ? { telephone: config.contact.phone } : {}),
     email: config.contact.email,
   };
 
@@ -185,13 +185,15 @@ export function generateOrganizationSchema(config: SiteConfig) {
     };
   }
 
-  // Add contact point
-  schema.contactPoint = {
-    '@type': 'ContactPoint',
-    telephone: config.contact.phone,
-    contactType: 'customer service',
-    availableLanguage: ['Ukrainian', 'Russian'],
-  };
+  // Add contact point only if phone is configured
+  if (config.contact.phone) {
+    schema.contactPoint = {
+      '@type': 'ContactPoint',
+      telephone: config.contact.phone,
+      contactType: 'customer service',
+      availableLanguage: ['Ukrainian', 'Russian'],
+    };
+  }
 
   // Add social media links if configured
   if (config.contact.telegram) {
@@ -716,7 +718,7 @@ export function generateLocalBusinessSchema(
     '@id': `${config.siteUrl}/#store`,
     name: config.siteName,
     url: config.siteUrl,
-    telephone: config.contact.phone,
+    ...(config.contact.phone ? { telephone: config.contact.phone } : {}),
     email: config.contact.email,
     priceRange,
     currenciesAccepted,

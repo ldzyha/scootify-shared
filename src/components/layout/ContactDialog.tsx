@@ -182,20 +182,22 @@ export function ContactDialog({
       {/* Contact Info */}
       <div className={styles.contactInfo}>
         {/* Phone - different behavior on desktop */}
-        <ContactRow
-          icon="phone"
-          iconVariant="blue"
-          label="Телефон"
-          value={phoneDisplay}
-          valueVariant="silver"
-          copyValue={phoneNumber}
-          onCopy={() => handleCopy(phoneNumber, 'phone')}
-          copied={copiedField === 'phone'}
-          href={isDesktop ? undefined : `tel:${phoneNumber}`}
-          isDesktop={isDesktop}
-          onShowQR={() => setShowQR(true)}
-          metallicGradients={siteConfig.metallicGradients}
-        />
+        {phoneNumber && (
+          <ContactRow
+            icon="phone"
+            iconVariant="blue"
+            label="Телефон"
+            value={phoneDisplay ?? ''}
+            valueVariant="silver"
+            copyValue={phoneNumber}
+            onCopy={() => handleCopy(phoneNumber, 'phone')}
+            copied={copiedField === 'phone'}
+            href={isDesktop ? undefined : `tel:${phoneNumber}`}
+            isDesktop={isDesktop}
+            onShowQR={() => setShowQR(true)}
+            metallicGradients={siteConfig.metallicGradients}
+          />
+        )}
 
         {/* Email (optional) */}
         {email && (

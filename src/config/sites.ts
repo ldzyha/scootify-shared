@@ -92,12 +92,11 @@ export const namiConfig: SiteConfig = {
   domain: "nami.com.ua",
   brand: "NAMI",
   tagline: "Преміум NAMI електросамокати",
-  description: "Офіційні NAMI електросамокати в Україні",
+  description: "Характеристики та огляди NAMI електросамокатів",
   contact: {
     phone: "+38 077 277 00 06",
     email: "leonid@dzyha.com",
     telegram: {
-      bot: "https://t.me/scooti_bot",
       personal: "https://t.me/ldzyha",
       group: "https://t.me/scootify_eco",
     },
@@ -115,8 +114,8 @@ export const namiConfig: SiteConfig = {
     cart: false,
     checkout: false,
     search: false,
-    telegramBot: true,
-    consultation: true,
+    telegramBot: false,
+    consultation: false,
   },
 };
 
@@ -127,12 +126,11 @@ export const scooConfig: SiteConfig = {
   brand: "SCOO",
   tagline: "Преміум міські електросамокати",
   description:
-    "Курований вибір преміум електросамокатів для міста. Перевірені моделі від топових брендів.",
+    "Огляди та характеристики преміум електросамокатів для міста. Перевірені моделі від топових брендів.",
   contact: {
     phone: "+38 077 277 00 06",
     email: "leonid@dzyha.com",
     telegram: {
-      bot: "https://t.me/scooti_bot",
       personal: "https://t.me/ldzyha",
       group: "https://t.me/scootify_eco",
     },
@@ -150,8 +148,8 @@ export const scooConfig: SiteConfig = {
     cart: false,
     checkout: false,
     search: false,
-    telegramBot: true,
-    consultation: true,
+    telegramBot: false,
+    consultation: false,
   },
 };
 
@@ -161,12 +159,11 @@ export const hyscoConfig: SiteConfig = {
   domain: "hysco.com.ua",
   brand: "HYSCO",
   tagline: "Hyper електросамокати",
-  description: "Гіперскутери преміум класу в Україні",
+  description: "Характеристики та огляди гіперскутерів преміум класу",
   contact: {
     phone: "+38 077 277 00 06",
     email: "leonid@dzyha.com",
     telegram: {
-      bot: "https://t.me/scooti_bot",
       personal: "https://t.me/ldzyha",
       group: "https://t.me/scootify_eco",
     },
@@ -184,7 +181,7 @@ export const hyscoConfig: SiteConfig = {
     cart: false,
     checkout: false,
     search: false,
-    telegramBot: true,
-    consultation: true,
+    telegramBot: false,
+    consultation: false,
   },
 };

@@ -93,7 +93,6 @@ export const legalPages: LegalPage[] = [
         content: 'З питань щодо умов використання звертайтесь:',
         items: [
           'Телефон: +38 077 277 00 06',
-          'Email: leonid@dzyha.com',
           'Telegram: @scootify_eco',
         ],
       },
@@ -223,7 +222,6 @@ export const legalPages: LegalPage[] = [
         content: 'Для уточнення інформації про доставку та оплату:',
         items: [
           'Телефон: +38 077 277 00 06',
-          'Email: leonid@dzyha.com',
           'Telegram: @scootify_eco',
         ],
       },
@@ -346,7 +344,6 @@ export const legalPages: LegalPage[] = [
         content: 'Для оформлення повернення або обміну товару звертайтесь:',
         items: [
           'Телефон: +38 077 277 00 06',
-          'Email: leonid@dzyha.com',
           'Telegram: @scootify_eco',
         ],
       },
@@ -410,7 +407,7 @@ export const legalPages: LegalPage[] = [
         title: 'Як діяти у разі гарантійного випадку',
         content: 'Якщо виникла проблема, яка може бути гарантійною:',
         items: [
-          '1. Зв\'яжіться з нами якомога швидше: +38 077 277 00 06, leonid@dzyha.com, @scootify_eco',
+          '1. Зв\'яжіться з нами якомога швидше: +38 077 277 00 06, Telegram @scootify_eco',
           '2. Опишіть проблему детально, надайте фото та відео несправності',
           '3. Ми допоможемо діагностувати проблему дистанційно',
           '4. Якщо це гарантійний випадок, з\'єднаємо вас з дистриб\'ютором для оформлення звернення',
@@ -462,7 +459,6 @@ export const legalPages: LegalPage[] = [
         content: 'З будь-яких питань щодо гарантії та сервісу звертайтесь:',
         items: [
           'Телефон: +38 077 277 00 06',
-          'Email: leonid@dzyha.com',
           'Telegram: @scootify_eco',
         ],
       },
@@ -559,7 +555,6 @@ export const legalPages: LegalPage[] = [
         title: 'Як реалізувати свої права',
         content: 'Для реалізації будь-якого з ваших прав щодо персональних даних, зв\'яжіться з нами:',
         items: [
-          'Email: leonid@dzyha.com',
           'Телефон: +38 077 277 00 06',
           'Telegram: @scootify_eco',
           'Ми розглянемо ваш запит протягом 30 днів',
@@ -605,7 +600,6 @@ export const legalPages: LegalPage[] = [
         title: 'Контакти',
         content: 'З будь-яких питань щодо обробки персональних даних та конфіденційності звертайтесь:',
         items: [
-          'Email: leonid@dzyha.com',
           'Телефон: +38 077 277 00 06',
           'Telegram: @scootify_eco',
         ],
@@ -749,7 +743,6 @@ export const legalPages: LegalPage[] = [
         title: 'Контакти',
         content: 'Якщо у вас є питання щодо використання cookies на {{siteName}}, звертайтесь:',
         items: [
-          'Email: leonid@dzyha.com',
           'Телефон: +38 077 277 00 06',
           'Telegram: @scootify_eco',
         ],

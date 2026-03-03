@@ -24,7 +24,7 @@ import styles from './CallButton.module.css';
  * @returns {JSX.Element} CallButton component
  */
 export interface CallButtonProps {
-  phoneNumber: string;
+  phoneNumber: string | undefined;
   phoneDisplay?: string;
   buttonText?: string;
   dialogTitle?: string;
@@ -36,7 +36,7 @@ export interface CallButtonProps {
 
 export function CallButton({ 
   phoneNumber,
-  phoneDisplay = phoneNumber,
+  phoneDisplay = phoneNumber ?? '',
   buttonText = 'Дзвінок',
   dialogTitle = 'Скануйте для дзвінка',
   dialogSubtitle = 'Відскануйте QR-код камерою телефону',
@@ -63,7 +63,7 @@ export function CallButton({
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(phoneNumber);
+      await navigator.clipboard.writeText(phoneNumber!);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -71,14 +71,17 @@ export function CallButton({
     }
   };
 
+  // If no phone number, render nothing
+  if (!phoneNumber) return null;
+
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=tel:${phoneNumber}&bgcolor=1E1E1E&color=ffffff`;
 
   // Mobile - direct tel link
   if (!isDesktop) {
     return (
       <a href={`tel:${phoneNumber}`} className={className}>
-        <MetallicButton variant="silver" size="md" className="w-full">
-          <Icon name="phone" size="sm" className="me-2" />
+        <MetallicButton variant="silver" size="md" className={styles.fullWidth}>
+          <Icon name="phone" size="sm" className={styles.iconStart} />
           {buttonText}
         </MetallicButton>
       </a>
@@ -94,7 +97,7 @@ export function CallButton({
         className={className}
         onClick={() => dialogRef.current?.open()}
       >
-        <Icon name="phone" size="sm" className="me-2" />
+        <Icon name="phone" size="sm" className={styles.iconStart} />
         {buttonText}
       </MetallicButton>
 

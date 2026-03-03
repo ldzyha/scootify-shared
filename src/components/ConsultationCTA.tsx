@@ -182,11 +182,13 @@ export function ConsultationCTA({
         
         <div className={styles.contactButtons}>
           {/* Phone */}
-          <CallButton 
-            phoneNumber={siteConfig.contact.phone}
-            buttonText="Телефонувати"
-            className={styles.contactButton}
-          />
+          {siteConfig.contact.phone && (
+            <CallButton 
+              phoneNumber={siteConfig.contact.phone}
+              buttonText="Телефонувати"
+              className={styles.contactButton}
+            />
+          )}
 
           {/* Telegram */}
           {siteConfig.contact.telegram?.personal && (
@@ -196,8 +198,8 @@ export function ConsultationCTA({
               rel="noopener noreferrer"
               className={styles.contactButton}
             >
-              <MetallicButton variant="blue" size="md" className="w-full">
-                <Icon name="telegram" size="sm" className="me-2" />
+              <MetallicButton variant="blue" size="md" className={styles.fullWidth}>
+                <Icon name="telegram" size="sm" className={styles.iconStart} />
                 Telegram
               </MetallicButton>
             </a>
@@ -208,8 +210,8 @@ export function ConsultationCTA({
             href={`mailto:${siteConfig.contact.email}?subject=Консультація: ${product.name}`}
             className={styles.contactButton}
           >
-            <MetallicButton variant="platinum" size="md" className="w-full">
-              <Icon name="mail" size="sm" className="me-2" />
+            <MetallicButton variant="platinum" size="md" className={styles.fullWidth}>
+              <Icon name="mail" size="sm" className={styles.iconStart} />
               Email
             </MetallicButton>
           </a>
@@ -280,18 +282,18 @@ export function ConsultationCTA({
               variant="gold"
               size="md"
               disabled={isSubmitting || submitSuccess}
-              className={`w-full ${styles.submitButton}`}
+              className={`${styles.fullWidth} ${styles.submitButton}`}
             >
               {submitSuccess ? (
                 <>
-                  <Icon name="check" size="sm" className="me-2" />
+                  <Icon name="check" size="sm" className={styles.iconStart} />
                   Заявку відправлено!
                 </>
               ) : isSubmitting ? (
                 'Надсилаємо...'
               ) : (
                 <>
-                  <Icon name="phone" size="sm" className="me-2" />
+                  <Icon name="phone" size="sm" className={styles.iconStart} />
                   Замовити дзвінок
                 </>
               )}
@@ -318,7 +320,7 @@ export function ConsultationCTA({
           onClick={() => dialogRef.current?.open()}
           className={className}
         >
-          <Icon name="phone" size="md" className="me-2" />
+          <Icon name="phone" size="md" className={styles.iconStart} />
           {ctaButtonText}
         </MetallicButton>
 

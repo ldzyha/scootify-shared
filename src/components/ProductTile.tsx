@@ -270,14 +270,14 @@ export function ProductTile({
 
         {/* Action Button */}
         <MetallicButton
-          variant={isConsultationOnly ? 'green' : accentVariant}
+          variant={isConsultationOnly ? 'blue' : accentVariant}
           size={variant === 'featured' ? 'md' : 'sm'}
           disabled={!inStock && !isConsultationOnly}
           onClick={handleButtonClick}
           className={styles.actionButton}
         >
-          <Icon name={isConsultationOnly ? 'phone' : 'cart'} size="sm" />
-          <span>{isConsultationOnly ? 'Консультація' : (hasHandler ? 'В кошик' : 'Детальніше')}</span>
+          <Icon name={isConsultationOnly ? 'info' : 'cart'} size="sm" />
+          <span>{isConsultationOnly ? 'Детальніше' : (hasHandler ? 'В кошик' : 'Детальніше')}</span>
         </MetallicButton>
       </div>
     </article>
