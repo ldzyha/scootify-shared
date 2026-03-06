@@ -219,7 +219,7 @@ function buildSections(specs: ProductSpecs): SpecSection[] {
 
     if (specs.performance.maxSpeedLimited) {
       rows.push({
-        label: 'Обмежена швидкість (EU)',
+        label: 'Швидкість на велодоріжці (UA)',
         value: `${specs.performance.maxSpeedLimited} км/год`,
       });
     }
