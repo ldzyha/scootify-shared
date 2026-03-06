@@ -374,7 +374,7 @@
 .newsletterInput:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(0, 87, 183, 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 99, 102, 241), 0.15);
 }
 
 /* Payment Methods */

@@ -7,10 +7,10 @@
 .container {
   --grid-gap: 1.5rem;
   --grid-gap-mobile: 1rem;
-  --skeleton-bg: #f0f0f0;
-  --skeleton-shimmer: #e0e0e0;
-  --empty-text-color: #666;
-  --empty-icon-color: #ccc;
+  --skeleton-bg: #2a2a2a;
+  --skeleton-shimmer: #3a3a3a;
+  --empty-text-color: #a0a0a0;
+  --empty-icon-color: #555;
   --controls-gap: 1rem;
   
   width: 100%;
@@ -189,15 +189,7 @@
   margin: 0;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .container {
-    --skeleton-bg: #2a2a2a;
-    --skeleton-shimmer: #3a3a3a;
-    --empty-text-color: #999;
-    --empty-icon-color: #555;
-  }
-}
+/* Sites are dark-only — no prefers-color-scheme override needed */
 
 /* Print optimization */
 @media print {

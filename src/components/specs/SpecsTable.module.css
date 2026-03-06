@@ -1,5 +1,5 @@
 /**
- * SpecsTable component styles
+ * SpecsTable component styles — dark-first
  */
 
 .container {
@@ -9,9 +9,9 @@
 }
 
 .section {
-  background: var(--color-bg-primary, #fff);
+  background: var(--color-bg-primary, #1a1a1a);
   border-radius: var(--radius-md, 8px);
-  border: 1px solid var(--color-border, #e5e5e5);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
   overflow: hidden;
 }
 
@@ -20,9 +20,9 @@
   padding: var(--space-3, 12px) var(--space-4, 16px);
   font-size: var(--font-size-lg, 18px);
   font-weight: 600;
-  color: var(--color-text-primary, #000);
-  background: var(--color-bg-secondary, #f9fafb);
-  border-bottom: 1px solid var(--color-border, #e5e5e5);
+  color: var(--color-text-primary, #f5f5f5);
+  background: var(--color-bg-secondary, #141414);
+  border-bottom: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
 }
 
 .table {
@@ -35,7 +35,7 @@
   grid-template-columns: minmax(200px, 1fr) minmax(150px, 2fr);
   gap: var(--space-4, 16px);
   padding: var(--space-3, 12px) var(--space-4, 16px);
-  border-bottom: 1px solid var(--color-border-light, #f0f0f0);
+  border-bottom: 1px solid var(--color-border-light, rgba(255, 255, 255, 0.06));
   transition: background-color 0.2s ease;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .row:hover {
-  background: var(--color-bg-hover, #fafbfc);
+  background: var(--color-bg-hover, rgba(255, 255, 255, 0.05));
 }
 
 .label {
@@ -52,7 +52,7 @@
   align-items: center;
   font-size: var(--font-size-base, 16px);
   font-weight: 500;
-  color: var(--color-text-secondary, #666);
+  color: var(--color-text-secondary, #a0a0a0);
 }
 
 .value {
@@ -60,14 +60,14 @@
   align-items: center;
   font-size: var(--font-size-base, 16px);
   font-weight: 600;
-  color: var(--color-text-primary, #000);
+  color: var(--color-text-primary, #f5f5f5);
 }
 
 .badge {
   display: inline-block;
   padding: var(--space-1, 4px) var(--space-2, 8px);
-  background: var(--color-bg-accent, #f0f9ff);
-  color: var(--color-primary, #0066cc);
+  background: var(--color-bg-accent, rgba(255, 255, 255, 0.08));
+  color: var(--color-primary, #6366f1);
   border-radius: var(--radius-sm, 4px);
   font-size: var(--font-size-sm, 14px);
   font-weight: 600;
@@ -96,6 +96,17 @@
   .section {
     border: 1px solid #ccc;
     break-inside: avoid;
+    background: #fff;
+  }
+
+  .sectionTitle {
+    background: #f0f0f0;
+    color: #000;
+  }
+
+  .value,
+  .label {
+    color: #000;
   }
   
   .row:hover {

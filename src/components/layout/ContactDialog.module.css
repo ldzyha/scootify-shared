@@ -14,7 +14,7 @@
 }
 
 .contactSubtitle {
-  color: #808080;
+  color: var(--foreground-muted, #a0a0a0);
   font-size: 14px;
   margin-bottom: 24px;
 }
@@ -62,7 +62,7 @@
 
 .contactLabel {
   display: block;
-  color: #606060;
+  color: var(--foreground-muted, #a0a0a0);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -172,7 +172,7 @@
 
 .callbackTitle {
   display: block;
-  color: #808080;
+  color: var(--foreground-muted, #a0a0a0);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -200,7 +200,8 @@
 }
 
 .callbackInput::placeholder {
-  color: #606060;
+  color: var(--foreground-muted, #a0a0a0);
+  opacity: 0.6;
 }
 
 .callbackInput:focus {
