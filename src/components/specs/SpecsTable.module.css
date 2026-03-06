@@ -15,14 +15,33 @@
   overflow: hidden;
 }
 
-.sectionTitle {
-  margin: 0;
+/* Section header with icon */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
   padding: var(--space-3, 12px) var(--space-4, 16px);
-  font-size: var(--font-size-lg, 18px);
-  font-weight: 600;
-  color: var(--color-text-primary, #f5f5f5);
   background: var(--color-bg-secondary, #141414);
   border-bottom: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+}
+
+.sectionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm, 4px);
+  background: var(--color-bg-accent, rgba(255, 255, 255, 0.06));
+  color: var(--color-primary, #4a90d9);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--font-size-base, 16px);
+  font-weight: 600;
+  color: var(--color-text-primary, #f5f5f5);
 }
 
 .table {
@@ -32,15 +51,20 @@
 
 .row {
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) minmax(150px, 2fr);
-  gap: var(--space-4, 16px);
-  padding: var(--space-3, 12px) var(--space-4, 16px);
+  grid-template-columns: minmax(180px, 1.2fr) minmax(120px, 1fr);
+  gap: var(--space-3, 12px);
+  padding: var(--space-2-5, 10px) var(--space-4, 16px);
   border-bottom: 1px solid var(--color-border-light, rgba(255, 255, 255, 0.06));
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease;
+  align-items: center;
 }
 
 .row:last-child {
   border-bottom: none;
+}
+
+.row:nth-child(even) {
+  background: var(--color-bg-stripe, rgba(255, 255, 255, 0.02));
 }
 
 .row:hover {
@@ -50,44 +74,167 @@
 .label {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-base, 16px);
+  gap: var(--space-1-5, 6px);
+  font-size: var(--font-size-sm, 14px);
   font-weight: 500;
   color: var(--color-text-secondary, #a0a0a0);
+}
+
+/* Small icon for feature rows */
+.featureIcon {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-tertiary, #606060);
+  flex-shrink: 0;
 }
 
 .value {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-base, 16px);
+  font-size: var(--font-size-sm, 14px);
   font-weight: 600;
   color: var(--color-text-primary, #f5f5f5);
 }
 
 .badge {
   display: inline-block;
-  padding: var(--space-1, 4px) var(--space-2, 8px);
+  padding: 2px var(--space-2, 8px);
   background: var(--color-bg-accent, rgba(255, 255, 255, 0.08));
-  color: var(--color-primary, #6366f1);
-  border-radius: var(--radius-sm, 4px);
-  font-size: var(--font-size-sm, 14px);
-  font-weight: 600;
+  color: var(--color-primary, #4a90d9);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs, 12px);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  border: 1px solid var(--color-primary-muted, rgba(74, 144, 217, 0.3));
+}
+
+/* ============================================================
+   Inline tooltip (no Dialog dependency)
+   ============================================================ */
+
+.tooltipWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--space-1, 4px);
+}
+
+.tooltipTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary, #606060);
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 1px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  outline: none;
+}
+
+.tooltipTrigger:hover,
+.tooltipTrigger:focus-visible {
+  color: var(--color-primary, #4a90d9);
+  background: var(--color-primary-subtle, rgba(74, 144, 217, 0.12));
+}
+
+.tooltipPopover {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  z-index: 100;
+  min-width: 220px;
+  max-width: 300px;
+  padding: var(--space-3, 12px);
+  background: var(--color-bg-overlay, #1e2430);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  flex-direction: column;
+  gap: var(--space-1-5, 6px);
+  pointer-events: none;
+}
+
+/* Arrow */
+.tooltipPopover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--color-border, rgba(255, 255, 255, 0.12));
+}
+
+.tooltipTrigger:hover + .tooltipPopover,
+.tooltipTrigger:focus + .tooltipPopover,
+.tooltipTrigger:focus-visible + .tooltipPopover {
+  display: flex;
+}
+
+.tooltipTitle {
+  display: block;
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 700;
+  color: var(--color-text-primary, #f5f5f5);
+  margin-bottom: 2px;
+}
+
+.tooltipText {
+  display: block;
+  font-size: var(--font-size-xs, 12px);
+  line-height: 1.5;
+  color: var(--color-text-secondary, #a0a0a0);
+  font-weight: 400;
+}
+
+.tooltipExample {
+  display: block;
+  font-size: var(--font-size-xs, 12px);
+  line-height: 1.4;
+  color: var(--color-text-tertiary, #606060);
+  border-top: 1px solid var(--color-border-light, rgba(255, 255, 255, 0.06));
+  padding-top: var(--space-1-5, 6px);
+  margin-top: var(--space-1, 4px);
+}
+
+.tooltipExample em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-primary, #4a90d9);
 }
 
 /* Responsive - stack on mobile */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .row {
     grid-template-columns: 1fr;
     gap: var(--space-1, 4px);
+    padding: var(--space-2, 8px) var(--space-3, 12px);
   }
-  
-  .label {
-    font-size: var(--font-size-sm, 14px);
-  }
-  
+
   .value {
-    font-size: var(--font-size-base, 16px);
+    padding-left: calc(var(--space-1-5, 6px) + 14px + var(--space-1-5, 6px)); /* align under label text past featureIcon */
+  }
+
+  /* On mobile tooltips open below instead of above */
+  .tooltipPopover {
+    top: calc(100% + 8px);
+    bottom: auto;
+    left: 0;
+    transform: none;
+    min-width: 200px;
+    max-width: 260px;
+  }
+
+  .tooltipPopover::after {
+    top: auto;
+    bottom: 100%;
+    left: 8px;
+    transform: none;
+    border-top-color: transparent;
+    border-bottom-color: var(--color-border, rgba(255, 255, 255, 0.12));
   }
 }
 
@@ -99,8 +246,11 @@
     background: #fff;
   }
 
-  .sectionTitle {
+  .sectionHeader {
     background: #f0f0f0;
+  }
+
+  .sectionTitle {
     color: #000;
   }
 
@@ -108,8 +258,12 @@
   .label {
     color: #000;
   }
-  
+
   .row:hover {
     background: transparent;
+  }
+
+  .tooltipWrapper {
+    display: none;
   }
 }
